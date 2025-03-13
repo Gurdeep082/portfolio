@@ -123,7 +123,7 @@ const Home = () => {
         <button className="role-btn"> <FontAwesomeIcon icon={faStarHalfStroke}/> Fullstack Developer</button>
         <h2>Hello, I'm</h2>
         <h1 className="animated-text">GURDEEP SINGH</h1>
-        <p style={{ textAlign: "left",fontSize:"30px",width:"100%",margin:"0 auto"}}>
+        <p style={{ textAlign: "left",fontSize:"30px",width:"100%",margin:"20px 10px 20px auto" }}>
           As a dedicated and passionate Fullstack Developer with a year of
           professional experience, I specialize in creating dynamic, responsive,
           and user-friendly web applications.

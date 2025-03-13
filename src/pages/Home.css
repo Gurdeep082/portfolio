@@ -14,6 +14,7 @@ body, html {
     -webkit-text-fill-color: transparent;
     animation: colorFlow 3s infinite alternate;
     margin-top: 0%;
+    margin-bottom: 10px;
 }
 
 @keyframes colorFlow {
@@ -79,7 +80,7 @@ body, html {
 .social-icons a {
     color: white;
     font-size: 24px;
-    margin: 0 10px;
+    margin-top: 20px;
     display: inline-block; /* Ensure the anchor tag is treated like a block element */
     transition: transform 0.3s ease-in-out; /* Define transition once here */
   }
