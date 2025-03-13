@@ -132,6 +132,55 @@ body, html {
     background: rgba(0, 0, 0, 0.593);
     border-radius: 20px;
 }
+.project-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0%;
+    margin-left: 0%;
+    gap: 10px;
+    margin-bottom: 100px;
+}
+.slideshow {
+    width: 100%;
+    border: 1px solid white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.518);
+    border-radius: 10px;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+.skill1{
+    text-align: center;
+    width: 30%;
+    max-height: 400px;
+    margin-top: 10%;
+    margin-left: 0%;
+    border: 1px solid white;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.593);
+    border-radius: 20px;
+
+}
+
 
 .role-btn {
     background: transparent;
@@ -154,7 +203,9 @@ body, html {
 .social-icons a:hover {
     color: #f6d365;
 }
-
+.contact{
+    margin-bottom: 100px;
+}
 /* 📌 Footer */
 footer {
     position: absolute;
