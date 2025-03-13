@@ -5,16 +5,65 @@ body, html {
     overflow-x: hidden;
     font-family: Arial, sans-serif;
 }
+.animated-text {
+    font-size: 70px;
+    font-weight: lighter;
+    background-image: linear-gradient(to right, #6500fc, #ff33f8, #5733ff);
+    background-size: 200% auto; /* Expand background width */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 3s infinite alternate;
+    margin-top: 0%;
+}
+
+@keyframes colorFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
 
 /* 🎥 Video Background */
 .video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Invert only the video in dark mode */
+.home-container.light .video-bg {
+  filter: invert(1);
+}
+
+/* Change text color to black in light mode */
+.home-container.light {
+  color: black;
+}
+
+/* Ensure links and headings are also dark in light mode */
+.home-container.light h1,
+.home-container.light h2,
+.home-container.light h3,
+.home-container.light p,
+.home-container.light a {
+  color: black;
+}
+
+/* Optional: Adjust the navbar and buttons if needed in light mode */
+.home-container.light .navbar,
+.home-container.light button {
+  background-color: #f1f1f1; /* Light background */
+  color: black;
+}
+
+/* Dark mode styles */
+.home-container.dark {
+  color: white;
 }
 
 /* 📌 Home Container */
@@ -27,7 +76,19 @@ body, html {
     padding: 20px;
 }
 
-/* 🔝 Navbar */
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    display: inline-block; /* Ensure the anchor tag is treated like a block element */
+    transition: transform 0.3s ease-in-out; /* Define transition once here */
+  }
+  
+  /* Hover effect to make the icons pop */
+  .social-icons a:hover {
+    transform: scale(1.5); /* Optional: Change color of the icon on hover */
+  }
+  
 .navbar {
     position: fixed;
     top: 0;
@@ -41,6 +102,11 @@ body, html {
     backdrop-filter: blur(10px);
     z-index: 100;
     color: white;
+}
+
+.home-container.light .navbar {
+  background: rgba(255, 255, 255, 0.427); /* Light mode navbar */
+  color: black;
 }
 
 .nav-right {
@@ -63,6 +129,10 @@ body, html {
     font-size: 16px;
 }
 
+.home-container.light .nav-list li a {
+  color: black; /* Light mode link color */
+}
+
 /* 🌙 Theme Selector */
 .theme-selector {
     position: relative;
@@ -76,6 +146,10 @@ body, html {
     cursor: pointer;
 }
 
+.home-container.light .theme-selector button {
+  color: black; /* Light mode theme selector button */
+}
+
 .dropdown {
     position: absolute;
     top: 40px;
@@ -87,6 +161,10 @@ body, html {
     flex-direction: column;
     gap: 5px;
     z-index: 1000;
+}
+
+.home-container.light .dropdown {
+  background: rgba(255, 255, 255, 0.9); /* Light mode dropdown background */
 }
 
 .dropdown div {
@@ -106,22 +184,22 @@ body, html {
 .intro {
     font-size: 18px;
     text-align: left;
-    width: 30%;
+    width: 40%;
     margin-top: 10%;
-    margin-left: 0%;
+    margin-left: 7%;
 }
+
 .skills-container {
     display: flex;
     justify-content: space-between;
     margin-top: 0%;
     margin-left: 0%;
     width: 100%;
-
     gap: 10px;
     margin-bottom: 100px;
 }
-.skill{
 
+.skill{
     text-align: center;
     width: 30%;
     max-height: 100px;
@@ -132,6 +210,50 @@ body, html {
     background: rgba(0, 0, 0, 0.593);
     border-radius: 20px;
 }
+.skill:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out;
+}
+.skill {
+    transition: transform 0.3s ease-in-out; /* Ensure smooth transition when hover is removed */
+}
+.skill1 {
+    text-align: center;
+    width: 20%;
+    max-height: 600px;
+    margin-top: 10%;
+    margin-left: 0%;
+    border: 1px solid white;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.593);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);;
+}
+.skill1 img{
+    border-radius: 15px;
+    
+}
+.skill1 img:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease-out;
+}
+
+.skill1 img:active {
+    transform: scale(1);
+    transition: transform 0.5s ease-in;
+}
+
+.skill1 img {
+    transition: transform 0.5s ease-in-out; /* Ensure smooth transition when hover is removed */
+}
+
+.home-container.light .skill, .home-container.light .slideshow, .home-container.light .skill1 {
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(40, 40, 40, 0.5);
+  color: black; /* Light mode text color */
+}
+
 .project-container {
     display: flex;
     justify-content: space-between;
@@ -140,6 +262,7 @@ body, html {
     gap: 10px;
     margin-bottom: 100px;
 }
+
 .slideshow {
     width: 100%;
     border: 1px solid white;
@@ -154,13 +277,17 @@ body, html {
 
 .slides {
     display: flex;
+    margin-top: 20px;
+    
+    
     transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    min-width: 100%;
+    min-width: 400px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    
     overflow: hidden;
 }
 
@@ -168,19 +295,6 @@ body, html {
     width: 100%;
     display: block;
 }
-.skill1{
-    text-align: center;
-    width: 30%;
-    max-height: 400px;
-    margin-top: 10%;
-    margin-left: 0%;
-    border: 1px solid white;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.593);
-    border-radius: 20px;
-
-}
-
 
 .role-btn {
     background: transparent;
@@ -190,7 +304,13 @@ body, html {
     border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-bottom: 15px;
+    margin-top: auto;
+}
+
+.home-container.light .role-btn {
+  background: #f1f1f1; /* Light mode button background */
+  border: 1px solid black; /* Light mode button border */
+  color: black; /* Light mode button text color */
 }
 
 .social-icons a {
@@ -200,19 +320,118 @@ body, html {
     transition: color 0.3s ease;
 }
 
+.home-container.light .social-icons a {
+  color: black; /* Light mode social icons */
+}
+
 .social-icons a:hover {
     color: #f6d365;
 }
-.contact{
-    margin-bottom: 100px;
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
 }
+
+/* Contact Form Container */
+.contact-form {
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent glass effect */
+    backdrop-filter: blur(10px); /* Blurred background */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Inputs */
+.contact-form input,
+.contact-form textarea {
+    width: 90%;
+    padding: 10px 10px;
+    margin: 10px 0;
+    border: none;
+    align-self: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Placeholder Styling */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Button Styling */
+.contact-form button {
+    width: 95%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #FFF7B7, #fff397);
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.contact-form button:hover {
+    background: linear-gradient(135deg, #fff07a, #ffea49);
+    transform: scale(1.05);
+}
+/* Light Mode Contact Form */
+.home-container.light .contact-form {
+    background: rgba(255, 255, 255, 0.7); /* Light glass effect */
+    color: black; /* Text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Mode Input Fields */
+.home-container.light .contact-form input,
+.home-container.light .contact-form textarea {
+    background: rgba(0, 0, 0, 0.1); /* Slightly darker input */
+    color: black; /* Text */
+}
+
+/* Light Mode Placeholder */
+.home-container.light .contact-form input::placeholder,
+.home-container.light .contact-form textarea::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Light Mode Button */
+.home-container.light .contact-form button {
+    background: linear-gradient(135deg, #f1f1f1, #e0e0e0);
+    color: black;
+}
+
+/* Light Mode Button Hover */
+.home-container.light .contact-form button:hover {
+    background: linear-gradient(135deg, #dcdcdc, #cfcfcf);
+}
+
+
 /* 📌 Footer */
 footer {
     position: absolute;
     bottom: 10px;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     text-align: center;
     padding: 10px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+}
+
+.home-container.light footer {
+  background: rgba(255, 255, 255, 0.8); /* Light mode footer background */
+  color: black; /* Light mode footer text color */
 }

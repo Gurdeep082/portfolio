@@ -15,7 +15,7 @@ import {
   faNodeJs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { faDatabase,faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css"; // External CSS for styling
 
 const projectImages = [
@@ -37,6 +37,7 @@ const projectImages2 = [
 
 const Home = () => {
   const [theme, setTheme] = useState("light");
+  const [videoSrc, setVideoSrc] = useState("/white.mp4");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -57,6 +58,11 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    // Change background video based on theme
+    setVideoSrc(theme === "dark" ? "/7670836-uhd_3840_2160_30fps.mp4" : "white.mp4");
+  }, [theme]);
+
   const themeIcons = {
     light: <FaSun />,
     dark: <FaMoon />,
@@ -71,31 +77,23 @@ const Home = () => {
   return (
     <div className={`home-container ${theme}`}>
       {/* 🎥 Video Background */}
-      <video className="video-bg" autoPlay loop muted playsInline>
-        <source src="/7670836-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+      <video className="video-bg" autoPlay loop muted playsInline key={videoSrc}>
+        <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* 🔝 Navbar */}
-      <nav className="navbar">
-        <h1>Gurdeep</h1>
-        <div className="nav-right">
-          <ul className="nav-list">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="#about">Skills</a>
-            </li>
-            <li>
-              <a href="#projects">Projects</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-          </ul>
+    {/* 🔝 Navbar */}
+        <nav className="navbar">
+          <h1>Gurdeep</h1>
+          <div className="nav-right">
+            <ul className="nav-list">
+            <li><a href="/" onClick={(e) => {e.preventDefault(); document.querySelector('.home-container').scrollIntoView({ behavior: 'smooth' });}}>Home</a></li>
+            <li><a href="#about" onClick={(e) => {e.preventDefault(); document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });}}>Skills</a></li>
+            <li><a href="#projects" onClick={(e) => {e.preventDefault(); document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });}}>Projects</a></li>
+            <li><a href="#contact" onClick={(e) => {e.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });}}>Contact</a></li>
+            </ul>
 
-          {/* 🌙 Theme Selector */}
+            {/* 🌙 Theme Selector */}
           <div className="theme-selector">
             <button onClick={() => setDropdownOpen(!dropdownOpen)}>
               {themeIcons[theme]}
@@ -118,31 +116,33 @@ const Home = () => {
         </div>
       </nav>
 
+      
+
       {/* 👋 Introduction Section */}
       <div className="intro">
-        <button className="role-btn">Fullstack Developer</button>
+        <button className="role-btn"> <FontAwesomeIcon icon={faStarHalfStroke}/> Fullstack Developer</button>
         <h2>Hello, I'm</h2>
-        <h1>GURDEEP SINGH</h1>
-        <p>
+        <h1 className="animated-text">GURDEEP SINGH</h1>
+        <p style={{ textAlign: "left",fontSize:"30px",width:"100%",margin:"0 auto"}}>
           As a dedicated and passionate Fullstack Developer with a year of
           professional experience, I specialize in creating dynamic, responsive,
           and user-friendly web applications.
         </p>
         <div className="social-icons">
-          <a href="https://github.com/Gurdeep082">
+          <a className="link" href="https://github.com/Gurdeep082">
             <FaGithub />
           </a>
-          <a href="https://www.youtube.com/@TechTroubleshooters_1">
+          <a className="link" href="https://www.youtube.com/@TechTroubleshooters_1">
             <FaYoutube />
           </a>
-          <a href="https://instagram.com/_gurdeep03_">
+          <a className="link" href="https://instagram.com/_gurdeep03_">
             <FaInstagram />
           </a>
         </div>
       </div>
 
       <section id="about" className="about">
-        <h2 style={{ marginTop: "100px" }}>Skills</h2>
+        <h2 style={{ marginTop: "100px" ,textAlign:"center",fontSize:"30px" }}>Skills</h2>
         <div className="skills-container">
           <div className="skill">
             <h3>
@@ -178,26 +178,30 @@ const Home = () => {
 
         <div className="skills-container">
             <div  className="skill1">
-                <img style={{width:"200px",height:"200px"}} src="Problemsolving.jpg" alt="Problem Solving"/>
+                <img style={{width:"250px",height:"200px"}} src="Problemsolving.jpg" alt="Problem Solving"/>
                 <h3>Problem Solving</h3>
+                <p>The skill to identify, analyze, and develop solutions to overcome challenges is key to personal and professional growth.</p>
             </div>
             <div  className="skill1">
-                <img style={{width:"200px",height:"200px"}} src="Teamwork.jpeg" alt="Teamwork"/>
+                <img style={{width:"250px",height:"200px"}} src="Teamwork.jpeg" alt="Teamwork"/>
                 <h3>Teamwork</h3>
+                <p>Teamwork skills enable individuals to collaborate effectively with others in various group settings, fostering better cooperation, communication, and collective success.</p>
             </div>
             <div className="skill1">
-                <img style={{width:"200px",height:"200px"}} src="communication.jpg" alt="Communication Skill"/>
+                <img style={{width:"250px",height:"200px"}} src="communication.jpg" alt="Communication Skill"/>
                 <h3>Communication</h3>
+                <p>The ability to effectively communicate with others, both verbally and non-verbally, is essential in all aspects of life.</p>
             </div>
             <div  className="skill1">
-                <img style={{width:"200px",height:"200px"}} src="SocialSkills.jpg" alt="Social Skill"/>
+                <img style={{width:"250px",height:"200px"}} src="SocialSkills.jpg" alt="Social Skill"/>
                 <h3>Social Skill</h3>
+                <p>Social skills enable individuals to interact effectively with others in a variety of social situations, fostering better relationships and collaboration</p>
             </div>
         </div>    
       </section>
 
       <section id="projects" className="projects">
-        <h2>Projects</h2>
+        <h2 style={{textAlign:"center",fontSize:"30px"}}>Projects</h2>
         <div className="project-container">
           <div className="slideshow">
             <div
@@ -234,18 +238,30 @@ const Home = () => {
 
       {/* 📩 Contact Section */}
       <section id="contact" className="contact">
-        <h2>Contact</h2>
-        <form>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <textarea placeholder="Message"></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </section>
+  <h2>Contact</h2>
+  <div className="contact-form">
+    <form>
+        <h3>Get in touch</h3>
+        <p>I enjoy working with dedicated creatives from businesses that make the world beautiful.
+We can do so much together. Let's talk.
+</p>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
 
       {/* 📌 Footer */}
       <footer>
         <p>© 2025 Gurdeep Singh</p>
+        <div style={{ display: "flex",margin:"20px 40px auto auto",marginRight:"30px" ,gap:"10px"}}>
+        <FaGithub />
+        <FaYoutube />
+        <FaInstagram />
+        </div>
       </footer>
     </div>
   );
