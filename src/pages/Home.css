@@ -121,9 +121,10 @@ body, html {
     margin-bottom: 100px;
 }
 .skill{
-    font-size: 11px;
-    text-align: left;
+
+    text-align: center;
     width: 30%;
+    max-height: 100px;
     margin-top: 10%;
     margin-left: 0%;
     border: 1px solid white;

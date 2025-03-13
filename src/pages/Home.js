@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaDesktop, FaGithub, FaYoutube, FaInstagram } from 'react-icons/fa';
 import './Home.css'; // External CSS for cleaner code
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCss3 ,faHtml5,faJs, faNodeJs, faReact } from '@fortawesome/free-brands-svg-icons';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+
 
 const Home = () => {
     const [theme, setTheme] = useState('light');
@@ -67,7 +71,7 @@ const Home = () => {
                     <h2>Hello, I'm</h2>
                     <h1>GURDEEP SINGH</h1>
                     <p>
-                        As a dedicated and passionate front-end developer with a year of professional experience,
+                        As a dedicated and passionate Fullstack Developer with a year of professional experience,
                         I specialize in creating dynamic, responsive, and user-friendly web applications.
                     </p>
                     <div className="social-icons">
@@ -82,33 +86,72 @@ const Home = () => {
                 <h2 style={{marginTop:'100px'}}>Skills</h2>
                 <div className="skills-container">
                     <div className="skill" > 
-                        <h3>HTML</h3>
-                        <p>Creating the structure of a website using semantic HTML tags.</p>
+                        <h3><FontAwesomeIcon icon={faHtml5} />    HTML</h3>
+                        
                     </div>
                     <div className="skill">
-                        <h3>CSS</h3>
-                        <p>Styling the website using CSS properties and animations.</p>
+                        
+                        <h3> <FontAwesomeIcon icon={faCss3} />  CSS</h3>
+                        
                     </div>
                     <div className="skill">
-                        <h3>JavaScript</h3>
-                        <p>Adding interactivity to the website using JavaScript and jQuery.</p>
+                        <h3> <FontAwesomeIcon icon={faJs} />  JavaScript</h3>
+                        
                     </div>
                     <div className="skill">
-                        <h3>React</h3>  
-                        <p>Building single-page applications using React and Redux.</p>
+                        <h3><FontAwesomeIcon icon={faReact} />  React</h3>  
+                        
                     </div>
                     <div className="skill">
-                        <h3>Node.js</h3>
-                        <p>Creating server-side applications using Node.js and Express.</p>
+                        <h3><FontAwesomeIcon icon={faNodeJs} />  Node.js</h3>
+                        
                     </div>
                     <div className="skill">
-                        <h3>MongoDB</h3>
-                        <p>Storing and retrieving data using MongoDB and Mongoose.</p>
+                        <h3><FontAwesomeIcon icon={faDatabase} />  MongoDB</h3>
+                       
                     </div>
                 </div>
             </section>
+            <section id="contact" className="contact">
+                <h2>Projects</h2>
+                <div className="projects-container">
+                    <div className="project">
+                        <img src="/project1.jpg" alt="Project 1" />
+                        <h3>Project 1</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                    <div className="project">
+                        <img src="/project2.jpg" alt="Project 2" />
+                        <h3>Project 2</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
+                        </p>
+                    </div>
+                    <div className="project">
+                        <img src="/project3.jpg" alt="Project 3" />
 
+                        <h3>Project 3</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="login" className="login">
+                <h2>Contact</h2>
+                <form>
+                    <input type="text" placeholder="Name" />
+                    <input type="email" placeholder="Email" />
+                    <textarea placeholder="Message"></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+            
 
             {/* 📌 Footer */}
             <footer>
@@ -117,5 +160,6 @@ const Home = () => {
         </div>
     );
 };
+
 
 export default Home;
