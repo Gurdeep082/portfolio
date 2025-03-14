@@ -9,7 +9,10 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-app.use(cors());
+app.use(cors({
+    origin: 'https://gurdeeps-portfolio.netlify.app'
+  }));
+  
 
 // Your Twilio credentials from .env file
 const accountSid = process.env.ACCOUNT_SID;
