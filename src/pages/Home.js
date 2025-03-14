@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   FaSun,
   FaMoon,
@@ -15,8 +16,9 @@ import {
   faNodeJs,
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase,faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
+import { faDatabase,faSquareArrowUpRight,faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css"; // External CSS for styling
+
 
 const projectImages = [
   "image1.png",
@@ -40,6 +42,40 @@ const Home = () => {
   const [videoSrc, setVideoSrc] = useState("/white.mp4");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!name || !email || !message) {
+      setResponseMessage('Please fill in all fields.');
+      return;
+    }
+
+    setIsSending(true);
+    setResponseMessage('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/send-message', {
+        name,
+        email,
+        message,
+      });
+
+      if (response.status === 200) {
+        setResponseMessage('Message sent successfully!');
+      }
+    } catch (error) {
+      setResponseMessage('Failed to send the message.');
+      console.error('Error sending message:', error);
+    }
+
+    setIsSending(false);
+  };
 
   useEffect(() => {
     if (theme === "system") {
@@ -123,7 +159,7 @@ const Home = () => {
         <button className="role-btn"> <FontAwesomeIcon icon={faStarHalfStroke}/> Fullstack Developer</button>
         <h2>Hello, I'm</h2>
         <h1 className="animated-text">GURDEEP SINGH</h1>
-        <p style={{ textAlign: "left",fontSize:"30px",width:"100%",margin:"20px 10px 20px auto" }}>
+        <p>
           As a dedicated and passionate Fullstack Developer with a year of
           professional experience, I specialize in creating dynamic, responsive,
           and user-friendly web applications.
@@ -142,7 +178,7 @@ const Home = () => {
       </div>
 
       <section id="about" className="about">
-        <h2 style={{ marginTop: "100px" ,textAlign:"center",fontSize:"30px" }}>Skills</h2>
+        <h2 style={{ marginTop: "250px" ,textAlign:"center",fontSize:"30px" }}>Skills</h2>
         <div className="skills-container">
           <div className="skill">
             <h3>
@@ -176,26 +212,26 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="skills-container">
+        <div className="skills-container1">
             <div  className="skill1">
-                <img style={{width:"250px",height:"200px"}} src="Problemsolving.jpg" alt="Problem Solving"/>
+                <img style={{width:"250px",height:"200px", marginTop:"20px"}} src="Problemsolving.jpg" alt="Problem Solving"/>
                 <h3>Problem Solving</h3>
-                <p>The skill to identify, analyze, and develop solutions to overcome challenges is key to personal and professional growth.</p>
+                <p style={{textAlign:"justify",padding:"20px "} }>The skill to identify, analyze, and develop solutions to overcome challenges is key to personal and professional growth.</p>
             </div>
             <div  className="skill1">
-                <img style={{width:"250px",height:"200px"}} src="Teamwork.jpeg" alt="Teamwork"/>
+                <img style={{width:"250px",height:"200px",marginTop:"20px"}} src="Teamwork.jpeg" alt="Teamwork"/>
                 <h3>Teamwork</h3>
-                <p>Teamwork skills enable individuals to collaborate effectively with others in various group settings, fostering better cooperation, communication, and collective success.</p>
+                <p style={{textAlign:"justify",padding:"20px "} }>Teamwork skills enable individuals to collaborate effectively with others in various group settings, fostering better cooperation, communication, and collective success.</p>
             </div>
             <div className="skill1">
-                <img style={{width:"250px",height:"200px"}} src="communication.jpg" alt="Communication Skill"/>
+                <img style={{width:"250px",height:"200px",marginTop:"20px"}} src="communication.jpg" alt="Communication Skill"/>
                 <h3>Communication</h3>
-                <p>The ability to effectively communicate with others, both verbally and non-verbally, is essential in all aspects of life.</p>
+                <p style={{textAlign:"justify",padding:"20px "} }>The ability to effectively communicate with others, both verbally and non-verbally, is essential in all aspects of life.</p>
             </div>
             <div  className="skill1">
-                <img style={{width:"250px",height:"200px"}} src="SocialSkills.jpg" alt="Social Skill"/>
+                <img style={{width:"250px",height:"200px",marginTop:"20px"}} src="SocialSkills.jpg" alt="Social Skill"/>
                 <h3>Social Skill</h3>
-                <p>Social skills enable individuals to interact effectively with others in a variety of social situations, fostering better relationships and collaboration</p>
+                <p style={{textAlign:"justify",padding:"20px "} }>Social skills enable individuals to interact effectively with others in a variety of social situations, fostering better relationships and collaboration</p>
             </div>
         </div>    
       </section>
@@ -214,11 +250,13 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <h3>ServiceHub <a href="https://servicehub-08.netlify.app/">View Project</a></h3>
+            <h3>ServiceHub : <a style={{textDecoration:"none"}} href="https://servicehub-08.netlify.app/">View Project <FontAwesomeIcon icon={faSquareArrowUpRight} /></a></h3>
+            <p style={{textAlign:"justify",padding:"20px "} }>"ServiceHub connects you with trusted professionals for home services like cooking, plumbing, pest control, and more. Built with React.js for a seamless experience."</p>
             
           </div>
           <div className="slideshow">
-            <div
+            
+            <div 
               className="slides"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
@@ -228,7 +266,8 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <h3>ILmKosh <a href="https://ilm-kosh.netlify.app/">View Project</a></h3>
+            <h3>ILmKosh : <a style={{textDecoration:"none"}} href="https://ilm-kosh.netlify.app/">View Project <FontAwesomeIcon icon={faSquareArrowUpRight} /></a></h3>
+            <p style={{textAlign:"justify",padding:"20px "} }>"ILmkosh is an innovative book reading platform built with MERN stack It allows users to read and upload books effortlessly, fostering a community of knowledge sharing and discovery."</p>
             
           </div>
         </div>
@@ -237,22 +276,37 @@ const Home = () => {
       </section>
 
       {/* 📩 Contact Section */}
-      <section id="contact" className="contact">
-  <h2>Contact</h2>
-  <div className="contact-form">
-    <form>
-        <h3>Get in touch</h3>
-        <p>I enjoy working with dedicated creatives from businesses that make the world beautiful.
-We can do so much together. Let's talk.
-</p>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
-
+      <div id="contact" className="contact">
+        <h2>Contact</h2>
+        <div className="contact-form">
+          <form onSubmit={handleSubmit}>
+            <h3>Get in touch</h3>
+            <p>I enjoy working with dedicated creatives from businesses that make the world beautiful.
+            We can do so much together. Let's talk.</p>
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              required 
+            />
+            <input 
+              type="email" 
+              placeholder="Your Email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+            />
+            <textarea 
+              placeholder="Your Message" 
+              value={message} 
+              onChange={(e) => setMessage(e.target.value)} 
+              required
+            ></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
 
       {/* 📌 Footer */}
       <footer>

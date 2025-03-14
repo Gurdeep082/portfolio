@@ -189,30 +189,48 @@ body, html {
     margin-top: 10%;
     margin-left: 7%;
 }
+.into p{
+    textAlign: left;
+    font-size:40px;
+    width:100%;
+    margin:20px 10px 20px auto;
+}
 
 .skills-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 0%;
     margin-left: 0%;
     width: 100%;
-    gap: 10px;
-    margin-bottom: 100px;
+    gap: 15px;
+    
+}
+.skills-container1 {
+    display: flex;
+    justify-content:center;
+    margin-top: 0%;
+    margin-left: 0%;
+    width: 100%;
+    gap: 15px;
+   
 }
 
 .skill{
     text-align: center;
     width: 30%;
     max-height: 100px;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 0%;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0);
     padding: 10px;
-    background: rgba(0, 0, 0, 0.593);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: black;
     border-radius: 20px;
 }
 .skill:hover {
     transform: scale(1.1);
+    
     transition: transform 0.3s ease-out;
 }
 .skill {
@@ -222,13 +240,15 @@ body, html {
     text-align: center;
     width: 20%;
     max-height: 600px;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     margin-left: 0%;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0);
     padding: 10px;
-    background: rgba(0, 0, 0, 0.593);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .skill1 img{
     border-radius: 15px;
@@ -266,11 +286,12 @@ body, html {
 
 .slideshow {
     width: 100%;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0);
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.518);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
-    max-width: 400px;
+    max-width: 500px;
     overflow: hidden;
     position: relative;
     margin: auto;
@@ -279,16 +300,14 @@ body, html {
 .slides {
     display: flex;
     margin-top: 20px;
-    
-    
+    width:100%;
     transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    min-width: 400px;
+    min-width:500px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    
     overflow: hidden;
 }
 
@@ -298,7 +317,8 @@ body, html {
 }
 
 .role-btn {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.17);
+    backdrop-filter: blur(10px);
     border: 1px solid white;
     color: white;
     padding: 8px 16px;
@@ -331,10 +351,15 @@ body, html {
 
 /* Contact Section */
 .contact {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    padding: 80px 20px;
-    position: relative;
+  
+    padding: 80px 20px ;
 }
+  
+    
 
 /* Contact Form Container */
 .contact-form {
@@ -435,4 +460,149 @@ footer {
 .home-container.light footer {
   background: rgba(255, 255, 255, 0.8); /* Light mode footer background */
   color: black; /* Light mode footer text color */
+}
+.about{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+/* meda responsiveness */
+
+@media screen and (max-width: 768px) {
+    .intro {
+        width: 100%;
+        margin-left: 0%;
+    }
+    .intro h1 {
+        font-size: 45px;
+    }
+    .intro p {
+        font-size: 16px;
+        width: 50%;
+    }
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+    }
+    .skills-container1{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        margin-right: 50px;
+
+    }
+    .skill {
+        width: 80%;
+    }
+    .skill1 {
+        width: 100%;
+        transform: scale(0.8);
+    }
+    .project-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        transform: scale(0.8);
+    }
+    .slideshow {
+        width: 80%;
+    }
+    .slides {
+        width: 100%;
+    }
+    .slide {
+        min-width: 100%;
+    }
+    .role-btn {
+        margin-top: 50px;
+    }
+    .contact-form {
+        transform: scale(0.8);
+        width: 100%;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 90%;
+    }
+    .contact-form button {
+        width: 100%;
+    }
+    .social-icons a {
+        margin: 0 5px;
+    }
+    
+}
+@media screen and (max-width:630px) {
+    .intro {
+        width: 100%;
+        margin-left: 0%;
+    }
+    .intro h1 {
+        font-size: 35px;
+    }
+    .intro p {
+        font-size: 16px;
+        width: 50%;
+    }
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+        padding-left: 20px;
+        padding-bottom: 10px;
+    }
+    .skills-container1{
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        transform: scale(0.8);
+        left: 50%;
+        
+
+    }
+    .skill {
+        width: 80%;
+        text-align: center;
+    }
+    .skill1 {
+        width: 100%;
+        transform: scale(0.8);
+    }
+    .project-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        transform: scale(0.8);
+    }
+    .slideshow {
+        width: 80%;
+    }
+    .slides {
+        width: 100%;
+    }
+    .slide {
+        min-width: 100%;
+    }
+    .role-btn {
+        margin-top: 50px;
+    }
+    .contact-form {
+        transform: scale(0.8);
+        width: 100%;
+        padding: 0px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 90%;
+    }
+    .contact-form button {
+        width: 100%;
+    }
+    .social-icons a {
+        margin: 0 5px;
+    }
+    
 }
