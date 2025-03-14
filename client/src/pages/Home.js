@@ -45,37 +45,34 @@ const Home = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isSending, setIsSending] = useState(false);
-  const [responseMessage, setResponseMessage] = useState('');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     if (!name || !email || !message) {
-      setResponseMessage('Please fill in all fields.');
+
+      alert('Please fill in all fields.');
       return;
     }
 
-    setIsSending(true);
-    setResponseMessage('');
-
     try {
-      const response = await axios.post('http://localhost:5000/send-message', {
+      const response = await axios.post('https://portfolio-quwt.onrender.com/send-message', {
         name,
         email,
         message,
       });
-
+  
       if (response.status === 200) {
-        setResponseMessage('Message sent successfully!');
+
+        alert('Message sent successfully!'); // Show popup alert
       }
     } catch (error) {
-      setResponseMessage('Failed to send the message.');
-      console.error('Error sending message:', error);
-    }
 
-    setIsSending(false);
+      alert('Failed to send the message.');
+    }
   };
+  
 
   useEffect(() => {
     if (theme === "system") {
