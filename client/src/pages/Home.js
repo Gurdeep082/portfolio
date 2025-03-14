@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import SpaceBackground from "../components/spacebackground";
+import LightBackground from "../components/lightbackground";
 import axios from "axios";
+import { CSSTransition } from 'react-transition-group';
 import {
   FaSun,
   FaMoon,
@@ -39,7 +42,6 @@ const projectImages2 = [
 
 const Home = () => {
   const [theme, setTheme] = useState("light");
-  const [videoSrc, setVideoSrc] = useState("/white.mp4");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [name, setName] = useState('');
@@ -91,10 +93,8 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    // Change background video based on theme
-    setVideoSrc(theme === "dark" ? "/7670836-uhd_3840_2160_30fps.mp4" : "white.mp4");
-  }, [theme]);
+   
+  
 
   const themeIcons = {
     light: <FaSun />,
@@ -102,18 +102,40 @@ const Home = () => {
     system: <FaDesktop />,
   };
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+  }, []);
+  
   const handleThemeChange = (selectedTheme) => {
     setTheme(selectedTheme);
+    localStorage.setItem("theme", selectedTheme);
     setDropdownOpen(false);
   };
 
   return (
     <div className={`home-container ${theme}`}>
-      {/* 🎥 Video Background */}
-      <video className="video-bg" autoPlay loop muted playsInline key={videoSrc}>
-        <source src={videoSrc} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <CSSTransition
+        key={theme}
+        in={theme === "light"}
+        timeout={500}
+        classNames="background-transition"
+        unmountOnExit
+      >
+        <LightBackground />
+      </CSSTransition>
+
+      <CSSTransition
+        key={theme}
+        in={theme === "dark"}
+        timeout={500}
+        classNames="background-transition"
+        unmountOnExit
+      >
+        <SpaceBackground />
+      </CSSTransition>
+       <div style={{ position: "relative", zIndex: 1 }}>
+
 
     {/* 🔝 Navbar */}
         <nav className="navbar">
@@ -314,6 +336,7 @@ const Home = () => {
         <FaInstagram />
         </div>
       </footer>
+      </div>
     </div>
   );
 };

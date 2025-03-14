@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import SpaceBackground from './components/spacebackground';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SpaceBackground />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        {/* Your other app content goes here */}
+        <h1>Welcome to the Space App</h1>
+      </div>
     </div>
+      
+
   );
 }
 
