@@ -158,78 +158,81 @@ const Home = () => {
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* 🔝 Navbar */}
         <nav className="navbar">
-          <h1>Gurdeep</h1>
+  <h1>Gurdeep</h1>
 
-          {/* Hamburger Menu Icon (Visible in small screens) */}
-          <div
-            className={`menu-icon ${theme}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
-          </div>
+  {/* Theme Selector (Always outside menu) */}
 
-          <div className={`nav-right ${menuOpen ? "active" : ""} , ${theme}`}>
-            <ul className="nav-list">
-              <li>
-                <a
-                  href="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .querySelector(".home-container")
-                      .scrollIntoView({ behavior: "smooth" });
-                    setMenuOpen(false); // Close menu on click
-                  }}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .querySelector("#about")
-                      .scrollIntoView({ behavior: "smooth" });
-                    setMenuOpen(false);
-                  }}
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .querySelector("#projects")
-                      .scrollIntoView({ behavior: "smooth" });
-                    setMenuOpen(false);
-                  }}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      .querySelector("#contact")
-                      .scrollIntoView({ behavior: "smooth" });
-                    setMenuOpen(false);
-                  }}
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+  
+<div className="main-div">
+  {/* Hamburger Menu Icon (For small screens) */}
+  <div
+    className={`menu-icon ${theme}`}
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    ☰
+  </div>
 
-            {/* 🌙 Theme Selector */}
-            <div className="theme-selector">
+  <div className={`nav-right ${menuOpen ? "active" : ""} ${theme}`}>
+    <ul className="nav-list">
+      <li>
+        <a
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .querySelector(".home-container")
+              .scrollIntoView({ behavior: "smooth" });
+            setMenuOpen(false);
+          }}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .querySelector("#about")
+              .scrollIntoView({ behavior: "smooth" });
+            setMenuOpen(false);
+          }}
+        >
+          Skills
+        </a>
+      </li>
+      <li>
+        <a
+          href="#projects"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .querySelector("#projects")
+              .scrollIntoView({ behavior: "smooth" });
+            setMenuOpen(false);
+          }}
+        >
+          Projects
+        </a>
+      </li>
+      <li>
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .querySelector("#contact")
+              .scrollIntoView({ behavior: "smooth" });
+            setMenuOpen(false);
+          }}
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div> 
+  <div className="theme-selector">
               <button onClick={() => setDropdownOpen(!dropdownOpen)}>
                 {theme === "light" ? (
                   <FaSun />
@@ -254,8 +257,9 @@ const Home = () => {
                 </div>
               )}
             </div>
-          </div>
-        </nav>
+  </div>
+</nav>
+
 
         {/* 👋 Introduction Section */}
         <div className="intro">
