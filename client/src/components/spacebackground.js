@@ -5,6 +5,8 @@ const SpaceBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    const canvasContainer = canvasRef.current; // Store the ref in a local variable
+
     // Initialize scene, camera, and renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -13,18 +15,27 @@ const SpaceBackground = () => {
       0.1,
       1000
     );
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    canvasRef.current.appendChild(renderer.domElement);
 
-    // Create star geometry
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(0x000000);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    if (canvasContainer) {
+      canvasContainer.appendChild(renderer.domElement);
+    }
+
+    // Load circular texture for stars
+    const textureLoader = new THREE.TextureLoader();
+    const starTexture = textureLoader.load("https://threejs.org/examples/textures/sprites/circle.png");
+
+    // Create stars
     const starGeometry = new THREE.BufferGeometry();
     const starCount = 11000;
     const starPositions = new Float32Array(starCount * 3);
 
-    // Random positions for stars
     for (let i = 0; i < starCount * 3; i++) {
-      starPositions[i] = (Math.random() - 0.5) * 2000; // star spread
+      starPositions[i] = (Math.random() - 0.5) * 2000;
     }
 
     starGeometry.setAttribute(
@@ -32,73 +43,71 @@ const SpaceBackground = () => {
       new THREE.BufferAttribute(starPositions, 3)
     );
 
-    // Star material
     const starMaterial = new THREE.PointsMaterial({
+      map: starTexture,
       color: 0xffffff,
-      size: 0.5,
+      size: 1,
       transparent: true,
+      depthWrite: false,
+      sizeAttenuation: true,
     });
 
-    // Create star points
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
 
-    // Set camera position
     camera.position.z = 800;
 
-    // Animate stars
+    // Animation loop
     const animateStars = () => {
       requestAnimationFrame(animateStars);
 
-      // Rotate stars
       stars.rotation.y += 0.0005;
       stars.rotation.x += 0.0002;
 
-      // Update star positions to simulate movement towards the camera
       const positions = stars.geometry.attributes.position.array;
       for (let i = 0; i < positions.length; i += 3) {
-        positions[i + 1] -= 0.05; // Move stars downward
+        positions[i + 1] -= 0.05;
 
-        // Reset star position if it moves out of bounds
         if (positions[i + 1] < -1000) {
           positions[i + 1] = 1000;
         }
       }
       stars.geometry.attributes.position.needsUpdate = true;
 
-      // Render the scene
       renderer.render(scene, camera);
     };
 
-    // Window resize handling
+    // Handle resizing properly
     const handleResize = () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const { innerWidth, innerHeight } = window;
+      renderer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth / innerHeight;
       camera.updateProjectionMatrix();
     };
 
     window.addEventListener("resize", handleResize);
-
     animateStars();
 
-    // Cleanup on component unmount
+    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
+      if (canvasContainer) {
+        canvasContainer.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
   return <div ref={canvasRef} style={canvasStyle} />;
 };
 
-// CSS styles for the canvas to ensure it covers the entire window and stays behind other elements
 const canvasStyle = {
-  position: "fixed", // Fixed position to cover the entire window
+  position: "fixed",
   top: 0,
   left: 0,
-  width: "100%",
-  height: "100%",
-  zIndex: -1, // Ensure it's in the background
+  width: "100vw",
+  height: "100vh",
+  zIndex: -1,
 };
 
 export default SpaceBackground;

@@ -5,40 +5,84 @@ const LightBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    const canvasContainer = canvasRef.current; // Store the ref in a local variable
+
     // Initialize scene, camera, and renderer
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff); // Set background to white
-    
+    scene.background = new THREE.Color(0xffffff); // White background
+
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     );
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    canvasRef.current.appendChild(renderer.domElement);
+
+    if (canvasContainer) {
+      canvasContainer.appendChild(renderer.domElement);
+    }
+
+    // Load a circular texture
+    const textureLoader = new THREE.TextureLoader();
+    const circleTexture = textureLoader.load(
+      "https://threejs.org/examples/textures/sprites/circle.png"
+    );
 
     // Create star geometry
     const starGeometry = new THREE.BufferGeometry();
     const starCount = 11000;
     const starPositions = new Float32Array(starCount * 3);
+    const starColors = new Float32Array(starCount * 3);
 
-    // Random positions for stars
-    for (let i = 0; i < starCount * 3; i++) {
-      starPositions[i] = (Math.random() - 0.5) * 2000; // star spread
+    // Random positions and fixed colors for stars
+    for (let i = 0; i < starCount; i++) {
+      const x = (Math.random() - 0.5) * 2000;
+      const y = (Math.random() - 0.5) * 2000;
+      const z = (Math.random() - 0.5) * 2000;
+
+      starPositions[i * 3] = x;
+      starPositions[i * 3 + 1] = y;
+      starPositions[i * 3 + 2] = z;
+
+      // Randomly assign one of three fixed colors
+      const colorType = Math.floor(Math.random() * 3);
+      if (colorType === 0) {
+        // Red
+        starColors[i * 3] = 1.0;
+        starColors[i * 3 + 1] = 0.0;
+        starColors[i * 3 + 2] = 0.0;
+      } else if (colorType === 1) {
+        // Green
+        starColors[i * 3] = 0.0;
+        starColors[i * 3 + 1] = 1.0;
+        starColors[i * 3 + 2] = 0.0;
+      } else {
+        // Blue
+        starColors[i * 3] = 0.0;
+        starColors[i * 3 + 1] = 0.0;
+        starColors[i * 3 + 2] = 1.0;
+      }
     }
 
     starGeometry.setAttribute(
       "position",
       new THREE.BufferAttribute(starPositions, 3)
     );
+    starGeometry.setAttribute(
+      "color",
+      new THREE.BufferAttribute(starColors, 3)
+    );
 
-    // Star material with black color
+    // Star material with circular shape
     const starMaterial = new THREE.PointsMaterial({
-      color: 0x000000, // Change stars to black
-      size: 0.5,
-      transparent: true,
+      vertexColors: true, // Keep colors fixed
+      size: 2, // Increase size for visibility
+      sizeAttenuation: true, // Ensures stars scale correctly
+      map: circleTexture, // Use circular texture
+      alphaTest: 0.5, // Ensure transparency works
+      transparent: true, // Remove square edges
     });
 
     // Create star points
@@ -52,20 +96,21 @@ const LightBackground = () => {
     const animateStars = () => {
       requestAnimationFrame(animateStars);
 
-      // Rotate stars
+      // Rotate stars slightly
       stars.rotation.y += 0.0005;
       stars.rotation.x += 0.0002;
 
-      // Update star positions to simulate movement towards the camera
+      // Move stars downward
       const positions = stars.geometry.attributes.position.array;
       for (let i = 0; i < positions.length; i += 3) {
-        positions[i + 1] -= 0.05; // Move stars downward
+        positions[i + 1] -= 0.05;
 
         // Reset star position if it moves out of bounds
         if (positions[i + 1] < -1000) {
           positions[i + 1] = 1000;
         }
       }
+
       stars.geometry.attributes.position.needsUpdate = true;
 
       // Render the scene
@@ -87,20 +132,23 @@ const LightBackground = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
+      if (canvasContainer) {
+        canvasContainer.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
   return <div ref={canvasRef} style={canvasStyle} />;
 };
 
-// CSS styles for the canvas to ensure it covers the entire window and stays behind other elements
+// CSS styles for the canvas to ensure it covers the entire window
 const canvasStyle = {
-  position: "fixed", // Fixed position to cover the entire window
+  position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   height: "100%",
-  zIndex: -1, // Ensure it's in the background
+  zIndex: -1,
 };
 
 export default LightBackground;
