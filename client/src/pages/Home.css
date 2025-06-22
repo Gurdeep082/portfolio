@@ -245,14 +245,18 @@ body, html {
     box-shadow: black;
     border-radius: 20px;
 }
-.skill:hover {
+.skill h3:hover {
     transform: scale(1.1);
-    
-    transition: transform 0.3s ease-out;
+    transition: transform 0.5s ease-out;
 }
-.skill {
-    transition: transform 0.3s ease-in-out; /* Ensure smooth transition when hover is removed */
+.skill h3:active {
+    transform: scale(1);
+    transition: transform 0.5s ease-in;
 }
+.skill{
+    transition: transform 0.5s ease-in-out; /* Ensure smooth transition when hover is removed */
+}
+
 .skill1 {
     text-align: center;
     width: 20%;
@@ -335,6 +339,17 @@ body, html {
     width: 100%;
     display: block;
 }
+.slide img:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease-out;
+}
+.slide img:active {
+    transform: scale(1);
+    transition: transform 0.5s ease-in;
+}
+.slide img {
+    transition: transform 0.5s ease-in-out; /* Ensure smooth transition when hover is removed */
+}
 
 .role-btn {
     background: rgba(0, 0, 0, 0.17);
@@ -414,6 +429,18 @@ body, html {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.contact-form input:focus,
+.contact-form textarea:focus {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+   
+}
+.contact-form input:not(:focus) ,
+.contact-form textarea:not(:focus) {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+   
+} 
 
 /* Button Styling */
 .contact-form button {
@@ -421,7 +448,7 @@ body, html {
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, #FFF7B7, #fff397);
+    background: linear-gradient(135deg, #FFF7B7, #ffef75);
     color: rgb(0, 0, 0);
     font-size: 18px;
     cursor: pointer;
@@ -430,7 +457,7 @@ body, html {
 
 /* Button Hover Effect */
 .contact-form button:hover {
-    background: linear-gradient(135deg, #fff07a, #ffea49);
+    background: linear-gradient(135deg, #fff07a, #ffe100);
     transform: scale(1.05);
 }
 
