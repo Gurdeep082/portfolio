@@ -4,7 +4,6 @@ import LightBackground from "../components/lightbackground";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { CSSTransition } from "react-transition-group";
 import {
   FaSun,
   FaMoon,
@@ -120,7 +119,7 @@ const Home = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
   }, []);
 
@@ -155,25 +154,8 @@ const Home = () => {
       <button onClick={toggleMute} style={{ position: 'fixed', top: 10, right: 10, zIndex: 1000, background: 'transparent', border: 'none', color: theme === 'light' ? 'black' : 'white', fontSize: '20px', cursor: 'pointer' }}>
         <FontAwesomeIcon icon={isMuted ? faVolumeOff : faVolumeUp} />
       </button>
-      <CSSTransition
-        key={theme}
-        in={theme === "light"}
-        timeout={500}
-        classNames="background-transition"
-        unmountOnExit
-      >
-        <LightBackground />
-      </CSSTransition>
-
-      <CSSTransition
-        key={theme}
-        in={theme === "dark"}
-        timeout={500}
-        classNames="background-transition"
-        unmountOnExit
-      >
-        <SpaceBackground />
-      </CSSTransition>
+      {theme === "light" && <LightBackground />}
+      {theme === "dark" && <SpaceBackground />}
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* 🔝 Navbar */}
         <nav className="navbar">
