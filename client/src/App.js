@@ -5,9 +5,12 @@ import audioFile from './music/space-440026.mp3';
 
 function App() {
   const audioRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   const toggleMute = () => {
+    if (isMuted) {
+      audioRef.current.play();
+    }
     setIsMuted(!isMuted);
   };
 
@@ -21,7 +24,7 @@ function App() {
           {isMuted ? 'Unmute' : 'Mute'}
         </button>
       </div>
-      <audio ref={audioRef} src={audioFile} autoPlay loop muted={isMuted} />
+      <audio ref={audioRef} src={audioFile} loop muted={isMuted} />
     </div>
       
 
