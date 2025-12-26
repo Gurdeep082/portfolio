@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SpaceBackground from "../components/spacebackground";
 import LightBackground from "../components/lightbackground";
 import axios from "axios";
@@ -30,6 +30,8 @@ import {
   faSquareArrowUpRight,
   faStarHalfStroke,
   faUser,
+  faVolumeUp,
+  faVolumeOff,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css"; // External CSS for styling
 
@@ -58,6 +60,9 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [canPlay, setCanPlay] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -125,6 +130,17 @@ const Home = () => {
     setDropdownOpen(false);
   };
 
+  const toggleMute = () => {
+    if (isMuted && canPlay) {
+      audioRef.current.play().catch(e => console.error('Audio play failed:', e));
+    }
+    setIsMuted(!isMuted);
+  };
+
+  const handleCanPlay = () => {
+    setCanPlay(true);
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
@@ -136,6 +152,9 @@ const Home = () => {
 
   return (
     <div className={`home-container ${theme}`}>
+      <button onClick={toggleMute} style={{ position: 'fixed', top: 10, right: 10, zIndex: 1000, background: 'transparent', border: 'none', color: theme === 'light' ? 'black' : 'white', fontSize: '20px', cursor: 'pointer' }}>
+        <FontAwesomeIcon icon={isMuted ? faVolumeOff : faVolumeUp} />
+      </button>
       <CSSTransition
         key={theme}
         in={theme === "light"}
@@ -526,6 +545,7 @@ const Home = () => {
           </div>
         </footer>
       </div>
+      <audio ref={audioRef} src="/music/space-440026.mp3" loop muted={isMuted} preload="auto" onCanPlay={handleCanPlay} onError={(e) => console.error('Audio error:', e)} />
     </div>
   );
 };
