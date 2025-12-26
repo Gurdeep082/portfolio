@@ -1,17 +1,21 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
 import SpaceBackground from './components/spacebackground';
-import audioFile from './music/space-440026.mp3';
 
 function App() {
   const audioRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [canPlay, setCanPlay] = useState(false);
 
   const toggleMute = () => {
-    if (isMuted) {
-      audioRef.current.play();
+    if (isMuted && canPlay) {
+      audioRef.current.play().catch(e => console.error('Audio play failed:', e));
     }
     setIsMuted(!isMuted);
+  };
+
+  const handleCanPlay = () => {
+    setCanPlay(true);
   };
 
   return (
@@ -24,7 +28,7 @@ function App() {
           {isMuted ? 'Unmute' : 'Mute'}
         </button>
       </div>
-      <audio ref={audioRef} src={audioFile} loop muted={isMuted} />
+      <audio ref={audioRef} src="/music/space-440026.mp3" loop muted={isMuted} onCanPlay={handleCanPlay} onError={(e) => console.error('Audio error:', e)} />
     </div>
       
 
