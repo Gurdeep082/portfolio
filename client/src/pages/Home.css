@@ -240,7 +240,7 @@ body, html {
     max-height: 100px;
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(39, 39, 39, 0.219);
     backdrop-filter: blur(10px);
     box-shadow: black;
     border-radius: 20px;
@@ -266,14 +266,14 @@ body, html {
     margin-left: 0%;
     border: 1px solid rgba(0, 0, 0, 0);
     padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(39, 39, 39, 0.219);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .skill1 img{
     border-radius: 15px;
-    width:200px ;
+    width:100% ;
     height:200px;
     margin-top: 20px;
     
@@ -312,7 +312,7 @@ body, html {
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0);
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(39, 39, 39, 0.219);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     max-width: 500px;
@@ -402,7 +402,7 @@ body, html {
 .contact-form {
     max-width: 500px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent glass effect */
+    background:  rgba(29, 29, 29, 0.219); /* Semi-transparent glass effect */
     backdrop-filter: blur(10px); /* Blurred background */
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -476,7 +476,7 @@ body, html {
     color: white;
     text-decoration: none;
     border: 2px solid rgba(255, 255, 255, 0);
-    background-color: #dcdcdc3f;
+    background-color: rgba(39, 39, 39, 0.219);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 10px;
@@ -490,7 +490,7 @@ body, html {
     text-align: left;
     font-size: 20px;
     border: 2px solid rgba(255, 255, 255, 0);
-    background-color: #dcdcdc3f;
+    background-color: rgba(39, 39, 39, 0.219);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 10px;
@@ -835,8 +835,10 @@ footer {
     }
     .contact-form {
         transform: scale(0.8);
-        width: 100%;
+        width: 70%;
         padding: 0px;
+        align-self: center;
+        margin-bottom: 40px;
     }
     .contact-form input,
     .contact-form textarea {

@@ -312,6 +312,7 @@ const Home = () => {
               marginTop: "250px",
               textAlign: "center",
               fontSize: "30px",
+              backgroundColor: "transparent",
             }}
           >
             Skills
@@ -388,7 +389,7 @@ const Home = () => {
         <section id="projects" className="projects">
           <h2
             data-aos="fade-up"
-            style={{ textAlign: "center", fontSize: "30px" }}
+            style={{ textAlign: "center", fontSize: "30px",backgroundColor: "transparent" }}
           >
             Projects
           </h2>
@@ -449,7 +450,7 @@ const Home = () => {
         </section>
 
         {/* 📩 Contact Section */}
-        <h2 data-aos="fade-up" className="contacth2">
+        <h2 data-aos="fade-up" className="contacth2" style={{backgroundColor:"transparent"}}>
           Contact
         </h2>
         <div id="contact" className="contact">
