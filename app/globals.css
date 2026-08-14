@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #edf7f5;
+  --foreground: #0f1729;
+  --panel: rgba(255, 255, 255, 0.75);
+  --panel-strong: #f7faf8;
+  --soft-border: rgba(15, 23, 41, 0.08);
+  --teal-900: #0c2f32;
+  --teal-800: #123d3d;
+  --teal-700: #1c4f4f;
+  --teal-600: #2a6f6d;
+  --teal-500: #3d7d7c;
+  --teal-300: #88d2c7;
+  --mint-200: #dff6f3;
+  --mint-100: #edf9f6;
+  --shadow: rgba(12, 47, 50, 0.12);
 }
 
 @theme inline {
@@ -12,15 +24,66 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(92, 214, 191, 0.42), transparent 17%),
+    radial-gradient(circle at 75% 18%, rgba(37, 108, 115, 0.22), transparent 22%),
+    radial-gradient(circle at 80% 82%, rgba(137, 219, 200, 0.34), transparent 18%),
+    linear-gradient(135deg, #edf9f6 0%, #e7f6f3 22%, #eef4ff 52%, #f8f5ef 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(10px);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+body::before {
+  top: 6%;
+  left: -8%;
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, rgba(46, 199, 166, 0.3), rgba(46, 199, 166, 0.09) 45%, transparent 70%);
+  animation: bubbleFloat 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  right: -8%;
+  bottom: 8%;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(52, 132, 180, 0.22), rgba(52, 132, 180, 0.08) 42%, transparent 72%);
+  animation: bubbleFloat 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(18px, -20px, 0) scale(1.08);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
