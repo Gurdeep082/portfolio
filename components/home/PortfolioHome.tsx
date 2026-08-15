@@ -1502,7 +1502,7 @@ export default function PortfolioHome() {
                         dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.3)]
                         "
                     >
-                      <div className="transition-all duration-300 relative h-75 overflow-hidden bg-[#eef6f4] dark:bg-[#1a3a38]">
+                      <div className="transition-all duration-300 relative h-66 overflow-hidden bg-[#eef6f4] dark:bg-[#1a3a38]">
                         {/* Images */}
                         {images.length > 0 ? (
                           images.map((imageSource, imageIndex) => (
@@ -1513,8 +1513,8 @@ export default function PortfolioHome() {
                               className={`
                               absolute
                               inset-0
-                              h-full
-                              w-full
+                              h-100%
+                              w-95%
                               object-cover
                               transition-all
                               duration-700
