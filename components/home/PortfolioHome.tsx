@@ -980,86 +980,149 @@ export default function PortfolioHome() {
                     <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                     <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                   </div>
+                  <div
+                    className="
+                      rounded-[14px]
+                      border border-[#2ac7a6]/20
+                      bg-[#f0f8f6]
+                      p-3
+                      font-mono
+                      text-[0.7rem]
+                      leading-6
+                      text-[#123d3d]
+                      shadow-inner shadow-[#123d3d]/5
 
-                  <div className="rounded-[14px] border border-[#2ac7a6]/20 dark:border-[#2ac7a6]/20 bg-[#f0f8f6] dark:bg-[linear-gradient(180deg,#071b1c_0%,#0b1f20_100%)] p-4 font-mono text-[0.75rem] leading-6 text-[#123d3d] dark:text-[#aef0db] shadow-inner dark:shadow-inner shadow-[#123d3d]/5 dark:shadow-[#021312]/60">
-                  <pre className="whitespace-pre-wrap text-left font-mono text-[13px] leading-7">
-                    {/* const */}
-                    <span className="text-[#7c3aed] dark:text-[#C586C0]">const</span>{" "}
-                    <span className="text-[#005cc5] dark:text-[#4FC1FF]">developer</span>{" "}
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">= {"{"}</span>
+                      dark:border-[#2ac7a6]/20
+                      dark:bg-[linear-gradient(180deg,#071b1c_0%,#0b1f20_100%)]
+                      dark:text-[#aef0db]
+                      dark:shadow-[#021312]/60
 
-                    {"\n   "}
-                    <span className="text-[#0550ae] dark:text-[#9CDCFE]">name</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
-                    <span className="text-[#a31515] dark:text-[#CE9178]">
-                      "Gurdeep Singh"
-                    </span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      sm:p-4
+                      sm:text-[0.75rem]
+                    "
+                  >
+                    <pre
+                      className="
+                        m-0
+                        whitespace-pre-wrap
+                        break-words
+                        text-left
+                        font-mono
+                        text-[11px]
+                        leading-6
+                        sm:text-[13px]
+                        sm:leading-7
+                      "
+                    >
+                      <span className="text-[#7c3aed] dark:text-[#C586C0]">const</span>{" "}
+                      <span className="text-[#005cc5] dark:text-[#4FC1FF]">developer</span>{" "}
+                      <span className="text-[#24292f] dark:text-[#D4D4D4]">= {"{"}</span>
 
-                    {"\n   "}
-                    <span className="text-[#0550ae] dark:text-[#9CDCFE]">role</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
-                    <span className="text-[#a31515] dark:text-[#CE9178]">
-                      "Software Developer Engineer"
-                    </span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      {"\n"}
+                      <span className="inline-block pl-3 sm:pl-4">
+                        <span className="text-[#0550ae] dark:text-[#9CDCFE]">name</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Gurdeep Singh"
+                        </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      </span>
 
-                    {"\n   "}
-                    <span className="text-[#0550ae] dark:text-[#9CDCFE]">passion</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
-                    <span className="text-[#a31515] dark:text-[#CE9178]">
-                      "Building impactful solutions"
-                    </span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      {"\n"}
+                      <span className="inline-block pl-3 sm:pl-4">
+                        <span className="text-[#0550ae] dark:text-[#9CDCFE]">role</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Software Developer Engineer"
+                        </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      </span>
 
-                    {"\n   "}
-                    <span className="text-[#0550ae] dark:text-[#9CDCFE]">skills</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">: [</span>
+                      {"\n"}
+                      <span className="inline-block pl-3 sm:pl-4">
+                        <span className="text-[#0550ae] dark:text-[#9CDCFE]">passion</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Building impactful solutions"
+                        </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      </span>
 
-                    <span className="text-[#a31515] dark:text-[#CE9178]">"MERN"</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
+                      {"\n"}
+                      <span className="inline-block pl-3 sm:pl-4">
+                        <span className="text-[#0550ae] dark:text-[#9CDCFE]">skills</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">: [</span>
 
-                    <span className="text-[#a31515] dark:text-[#CE9178]">"JavaScript"</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "MERN"
+                        </span>
 
-                    <span className="text-[#a31515] dark:text-[#CE9178]">"TypeScript"</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
 
-                    <span className="text-[#a31515] dark:text-[#CE9178]">"Next.js"</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "JavaScript"
+                        </span>
 
-                    <span className="text-[#a31515] dark:text-[#CE9178]">"Tailwind CSS"</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
 
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">],</span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "TypeScript"
+                        </span>
 
-                    {"\n   "}
-                    <span className="text-[#0550ae] dark:text-[#9CDCFE]">focus</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
-                    <span className="text-[#a31515] dark:text-[#CE9178]">
-                      "Clean Code & User Experience"
-                    </span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
 
-                    {"\n"}
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">{"};"}</span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Next.js"
+                        </span>
 
-                    {"\n\n"}
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">, </span>
 
-                    <span className="text-[#7c3aed] dark:text-[#C586C0]">function</span>{" "}
-                    <span className="text-[#795e26] dark:text-[#DCDCAA]">build</span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">() {"{"}</span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Tailwind CSS"
+                        </span>
 
-                    {"\n    "}
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">],</span>
+                      </span>
 
-                    <span className="text-[#7c3aed] dark:text-[#C586C0]">return</span>{" "}
-                    <span className="text-[#a31515] dark:text-[#CE9178]">
-                      "Creating something awesome"
-                    </span>
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">;</span>
+                      {"\n"}
+                      <span className="inline-block pl-3 sm:pl-4">
+                        <span className="text-[#0550ae] dark:text-[#9CDCFE]">focus</span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Clean Code & User Experience"
+                        </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
+                      </span>
 
-                    {"\n"}
-                    <span className="text-[#24292f] dark:text-[#D4D4D4]">{"}"}</span>
-                  </pre>
+                      {"\n"}
+                      <span className="text-[#24292f] dark:text-[#D4D4D4]">{"};"}</span>
+
+                      {"\n\n"}
+
+                      <span className="text-[#7c3aed] dark:text-[#C586C0]">
+                        function
+                      </span>{" "}
+                      <span className="text-[#795e26] dark:text-[#DCDCAA]">
+                        build
+                      </span>
+                      <span className="text-[#24292f] dark:text-[#D4D4D4]">
+                        () {"{"}
+                      </span>
+
+                      {"\n"}
+                      <span className="inline-block pl-4 sm:pl-6">
+                        <span className="text-[#7c3aed] dark:text-[#C586C0]">
+                          return
+                        </span>{" "}
+                        <span className="text-[#a31515] dark:text-[#CE9178]">
+                          "Creating something awesome"
+                        </span>
+                        <span className="text-[#24292f] dark:text-[#D4D4D4]">;</span>
+                      </span>
+
+                      {"\n"}
+                      <span className="text-[#24292f] dark:text-[#D4D4D4]">{"}"}</span>
+                    </pre>
                   </div>
                 </div>
               </div>
