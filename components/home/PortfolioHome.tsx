@@ -895,7 +895,7 @@ export default function PortfolioHome() {
                 <h1 className="text-4xl font-black leading-[0.95] tracking-[-0.06em] text-[#10202d] dark:text-[#f4fbf8] sm:text-5xl lg:text-[4.1rem]">
                   Gurdeep Singh
                   <span className="mt-2 block text-[#2ac7a6] dark:text-[#36d7b4]">
-                    Software Developer Engineer
+                    Software Development Engineer
                   </span>
                 </h1>
 
@@ -1033,7 +1033,7 @@ export default function PortfolioHome() {
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">role</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
                         <span className="text-[#a31515] dark:text-[#CE9178]">
-                          "Software Developer Engineer"
+                          "Software Development Engineer"
                         </span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">,</span>
                       </span>
@@ -1255,7 +1255,7 @@ export default function PortfolioHome() {
 
                 {/* Description */}
                 <p className="max-w-[620px] text-[16px] font-medium leading-[1.85] text-[#304f5b] dark:text-[#a8d5d1]">
-                  I&apos;m a passionate Software Developer Engineer who loves
+                  I&apos;m a passionate Software Development Engineer who loves
                   turning ideas into real-world applications. I specialize in
                   the MERN stack and enjoy building clean, efficient, and
                   scalable solutions.
