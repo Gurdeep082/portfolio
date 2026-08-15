@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #edf7f5;
   --foreground: #0f1729;
+  --bg:#003f33;
   --panel: rgba(255, 255, 255, 0.75);
   --panel-strong: #f7faf8;
   --soft-border: rgba(15, 23, 41, 0.08);
@@ -40,6 +43,16 @@ body {
     linear-gradient(135deg, #edf9f6 0%, #e7f6f3 22%, #eef4ff 52%, #f8f5ef 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: background 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark body {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(42, 199, 166, 0.15), transparent 18%),
+    radial-gradient(circle at 80% 18%, rgba(7, 83, 74, 0.35), transparent 22%),
+    radial-gradient(circle at 70% 80%, rgba(52, 207, 169, 0.12), transparent 18%),
+    linear-gradient(135deg, #020d0d 0%, #061a19 28%, #0a1e1d 52%, #020d0d 100%);
+  color: #e7f6f1;
 }
 
 body::before,
