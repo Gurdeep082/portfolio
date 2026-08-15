@@ -1879,7 +1879,7 @@ export default function PortfolioHome() {
                     dark:text-[#7ec9b5]
                   "
                   >
-                    May 2026 — Present
+                    June 2026 — Present
                   </span>
                 </div>
 
