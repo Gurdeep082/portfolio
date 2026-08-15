@@ -36,7 +36,7 @@ type DashboardData = {
   };
 };
 
-const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const apiBase = process.env.NEXT_PUBLIC_API_URL ;
 
 async function fetchJson<T>(url: string, options: RequestInit = {}, adminKey?: string): Promise<T> {
   const headers = new Headers(options.headers || {});

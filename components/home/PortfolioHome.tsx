@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Code,
@@ -87,7 +86,7 @@ const normalizeProjectImageSource = (
   return null;
 };
 
-const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const apiBase = process.env.NEXT_PUBLIC_API_URL || "";
 
 const fallbackProjects: Project[] = [
   {
@@ -112,17 +111,7 @@ const fallbackProjects: Project[] = [
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
     ],
   },
-  {
-    title: "BizBiteNow",
-    description:
-      "Restaurant ordering system with menu management, cart, and order tracking.",
-    stack: "React, Firebase, Stripe",
-    demoLink: "https://example.com/bizbitenow",
-    githubLink: "https://github.com/username/bizbitenow",
-    images: [
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80",
-    ],
-  },
+
 ];
 
 const skillItems = [
@@ -134,7 +123,7 @@ const skillItems = [
   { name: "JavaScript", icon: "/javascript.svg" },
   { name: "TypeScript", icon: "/Typescript.svg" },
   { name: "Tailwind CSS", icon: "/Tailwind CSS.svg" },
-  { name: "Git & GitHub", icon: "/github.svg" },
+  { name: "Git & GitHub", icon: "/GitHub.svg" },
   { name: "REST API", icon: "/Azios.svg" },
   { name: "SQL", icon: "/SQL Developer.svg" },
   { name: "UI/UX", icon: "/web-design.png" },
@@ -333,6 +322,7 @@ useEffect(() => {
       projectList.forEach((project, index) => {
         const images = Array.isArray(project.images)
           ? project.images
+              .filter((img): img is NonNullable<ProjectImage> => img != null)
               .map((image) => normalizeProjectImageSource(image, apiBase))
               .filter((image): image is string => Boolean(image))
           : [];
@@ -409,13 +399,6 @@ useEffect(() => {
                 </a>
               ))}
             </nav>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-xl border border-[#123d3d]/20 bg-[#0d3d3d] px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(13,61,61,0.18)] transition hover:bg-[#123d3d]"
-            >
-              Let&apos;s Connect
-            </a>
           </div>
         </header>
 
@@ -838,6 +821,7 @@ useEffect(() => {
 
   const images = Array.isArray(project.images)
     ? project.images
+        .filter((img): img is NonNullable<ProjectImage> => img != null)
         .map((image) => normalizeProjectImageSource(image, apiBase))
         .filter((image): image is string => Boolean(image))
     : [];
