@@ -448,7 +448,7 @@ export default function PortfolioHome() {
   }, [projectList.length]);
   const downloadResume = resume
     ? { href: resume, download: resumeName }
-    : { href: "#contact" };
+    : null;
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#020d0d] text-[#123d3d] dark:text-[#e7f6f1] transition-colors duration-500">
@@ -1263,53 +1263,87 @@ export default function PortfolioHome() {
 
                 {/* Resume Button */}
                 <div className="mt-8">
-                  <a
-                    href={downloadResume.href}
-                    {...(resume ? { download: resumeName } : {})}
-                    className="
-                        transition-all duration-300
-                        inline-flex
-                        h-[58px]
-                        items-center
-                        justify-center
-                        gap-3
-                        rounded-[14px]
-                        border
-                        border-[#123d3d]/10
-                        dark:border-[#4a9d94]/30
-                        bg-white
-                        dark:bg-[#1a3a38]
-                        px-6
-                        text-[16px]
-                        font-bold
-                        text-[#10202d]
-                        dark:text-[#e0f2f1]
-                        shadow-[0_4px_12px_rgba(18,61,61,0.04)]
-                        dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)]
-                        hover:-translate-y-[1px]
-                        hover:bg-[#f7fbfa]
-                        dark:hover:bg-[#225450]
-                        hover:shadow-[0_8px_20px_rgba(18,61,61,0.08)]
-                        dark:hover:shadow-[0_8px_20px_rgba(0,0,0,0.3)]
-                        "
+                 {downloadResume ? (
+                <a
+                  href={downloadResume.href}
+                  download={downloadResume.download}
+                  className="
+                    transition-all duration-300
+                    inline-flex
+                    h-[58px]
+                    items-center
+                    justify-center
+                    gap-3
+                    rounded-[14px]
+                    border
+                    border-[#123d3d]/10
+                    dark:border-[#4a9d94]/30
+                    bg-white
+                    dark:bg-[#1a3a38]
+                    px-6
+                    text-[16px]
+                    font-bold
+                    text-[#10202d]
+                    dark:text-[#e0f2f1]
+                    shadow-[0_4px_12px_rgba(18,61,61,0.04)]
+                    dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)]
+                    hover:-translate-y-[1px]
+                    hover:bg-[#f7fbfa]
+                    dark:hover:bg-[#225450]
+                  "
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    {/* Download icon */}
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M12 3v12" />
-                      <path d="m7 10 5 5 5-5" />
-                      <path d="M5 21h14" />
-                    </svg>
-                    Download Resume
-                  </a>
+                    <path d="M12 3v12" />
+                    <path d="m7 10 5 5 5-5" />
+                    <path d="M5 21h14" />
+                  </svg>
+
+                  Download Resume
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="
+                    inline-flex
+                    h-[58px]
+                    items-center
+                    justify-center
+                    gap-3
+                    rounded-[14px]
+
+                    border
+                    border-[#123d3d]/10
+                    dark:border-[#4a9d94]/25
+
+                    bg-gray-100
+                    dark:bg-[#1a3a38]
+
+                    px-6
+                    text-[16px]
+                    font-bold
+
+                    text-gray-400
+                    dark:text-[#6f9994]
+
+                    cursor-not-allowed
+
+                    shadow-[0_4px_12px_rgba(18,61,61,0.04)]
+                    dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)]
+                  "
+                >
+                  Download Resume
+                </button>
+              )}
                 </div>
               </div>
             </div>
