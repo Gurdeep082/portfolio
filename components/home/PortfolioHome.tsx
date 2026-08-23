@@ -1224,7 +1224,7 @@ export default function PortfolioHome() {
 
           <section
             id="about"
-            className="mt-8 grid gap-5 lg:grid-cols-[1fr_1.1fr]"
+            className="mt-8 grid gap-5 lg:grid-cols-2"
           >
             <div className="transition-all duration-300 relative overflow-hidden rounded-[14px] border border-[#123d3d]/10 dark:border-[#4a9d94]/20 bg-white dark:bg-[#0f2725] p-6 text-[#123d3d] dark:text-[#e0f2f1] shadow-[0_8px_24px_rgba(18,61,61,0.05)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.2)] sm:p-7">
               {/* Decorative dotted pattern */}
