@@ -1535,7 +1535,7 @@ export default function PortfolioHome() {
                         max-md:snap-center
                         max-md:w-[80%]
                         max-md:max-w-[286px]
-                        max-md:h-[360px]
+                        max-md:h-[400px]
                         flex-col
                         overflow-hidden
                         rounded-[18px]
@@ -1670,7 +1670,7 @@ export default function PortfolioHome() {
                           </h3>
 
                           <p className="mt-1 text-[13px] font-medium text-[#64748b] dark:text-[#B0B0B0] max-md:text-[10px]">
-                            Full-Stack Web Platform
+                          Web Platform
                           </p>
                         </div>
 
@@ -1678,7 +1678,7 @@ export default function PortfolioHome() {
                         <p
                           className="
                             line-clamp-2
-                            text-[14px] max-md:text-[11px]
+                            text-[14px] max-md:text-[9px]
                             leading-[1.5] max-md:leading-[1.35]
                             text-[#536b72]
                             dark:text-[#B0B0B0]
