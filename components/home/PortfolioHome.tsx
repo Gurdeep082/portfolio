@@ -1576,7 +1576,9 @@ export default function PortfolioHome() {
                               ${
                                 imageIndex === activeImageIndex
                                   ? "translate-x-0 scale-100 opacity-100"
-                                  : "translate-x-full scale-105 opacity-0"
+                                  : imageIndex < activeImageIndex
+                                    ? "-translate-x-full scale-105 opacity-0"
+                                    : "translate-x-full scale-105 opacity-0"
                               }
                             `}
                             />
