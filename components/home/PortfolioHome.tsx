@@ -1535,6 +1535,7 @@ export default function PortfolioHome() {
                         max-md:snap-center
                         max-md:w-[80%]
                         max-md:max-w-[286px]
+                        max-md:h-[360px]
                         flex-col
                         overflow-hidden
                         rounded-[18px]
@@ -1554,7 +1555,7 @@ export default function PortfolioHome() {
                         dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.35)]
                         "
                     >
-                      <div className="relative h-[11.2rem] w-full shrink-0 overflow-hidden rounded-t-[18px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-[7.6rem] max-md:rounded-t-[14px]">
+                      <div className="relative h-[11.2rem] w-full shrink-0 overflow-hidden rounded-t-[18px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-1/2 max-md:rounded-t-[14px]">
                         {/* Images */}
                         {images.length > 0 ? (
                           images.map((imageSource, imageIndex) => (
@@ -1649,12 +1650,12 @@ export default function PortfolioHome() {
                         CONTENT
                     ====================================== */}
 
-                      <div className="flex flex-col p-4 max-md:p-2.5 sm:p-5">
+                      <div className="flex min-h-0 flex-col p-4 max-md:h-1/2 max-md:overflow-hidden max-md:p-2.5 sm:p-5">
                         {/* Title */}
                         <div className="mb-3 max-md:mb-2">
                           <h3
                             className="
-                            text-[24px] max-md:text-[19px]
+                            line-clamp-1 text-[24px] max-md:text-[19px]
                             font-extrabold
                             tracking-[-0.035em]
                             text-[#10202d]
@@ -1688,7 +1689,7 @@ export default function PortfolioHome() {
 
                         {/* Stack */}
                         {project.stack ? (
-                          <div className="mt-4 flex flex-wrap gap-2 max-md:mt-2.5 max-md:gap-1">
+                          <div className="mt-4 flex flex-nowrap gap-2 overflow-hidden max-md:mt-2.5 max-md:gap-1">
                             {project.stack.split(",").slice(0, 6).map((item) => (
                               <span
                                 key={item}
@@ -1705,6 +1706,7 @@ export default function PortfolioHome() {
                                 max-md:px-1.5
                                 max-md:py-1
                                 max-md:text-[9px]
+                                max-md:shrink-0
                                 font-semibold
                                 text-[#28615f]
                                 dark:text-[#E0E0E0]
