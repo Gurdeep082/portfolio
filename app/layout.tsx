@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+// Applies the saved theme before first paint so dark mode never flashes light.
+const themeInitScript = `(()=>{try{const saved=localStorage.getItem("darkMode");const dark=saved===null||saved==="true";document.documentElement.classList.toggle("dark",dark)}catch{}})()`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +26,6 @@ export const metadata: Metadata = {
     email: true,
     telephone: true,
   },
-  viewport: "width=device-width, initial-scale=1.0, maximum-scale=5.0",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,20 +68,28 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 5.0,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#edf7f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <meta name="theme-color" content="#123d3d" />
-        <meta name="msapplication-TileColor" content="#123d3d" />
+        <meta name="msapplication-TileColor" content="#121212" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://localhost:5000" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -104,7 +114,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
       </head>
-      <body className="min-h-full bg-[#edf5f1] text-[#123d3d]">{children}</body>
+      <body className="min-h-full bg-transparent text-[#123d3d] dark:bg-[#121212] dark:text-[#e0e0e0]">{children}</body>
     </html>
   );
 }
