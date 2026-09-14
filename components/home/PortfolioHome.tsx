@@ -1614,6 +1614,7 @@ export default function PortfolioHome() {
                             flex
                             items-center
                             gap-1.5
+                            max-md:hidden
                           "
                           >
                             {images.map((_, imageIndex) => (
@@ -1689,11 +1690,12 @@ export default function PortfolioHome() {
 
                         {/* Stack */}
                         {project.stack ? (
-                          <div className="mt-4 flex flex-nowrap gap-2 overflow-hidden max-md:mt-2.5 max-md:gap-1">
-                            {project.stack.split(",").slice(0, 6).map((item) => (
-                              <span
-                                key={item}
-                                className="
+                          <div className="mt-4 max-md:mt-2.5">
+                            <div className="flex min-w-0 flex-nowrap gap-2 overflow-hidden max-md:gap-1">
+                              {project.stack.split(",").slice(0, 6).map((item) => (
+                                <span
+                                  key={item}
+                                  className="
                                 rounded-full
                                 border
                                 border-[#123d3d]/10
@@ -1715,10 +1717,11 @@ export default function PortfolioHome() {
                         dark:hover:border-[#555555]
                                 dark:group-hover:border-[#888888]/60
                               "
-                              >
-                                {item.trim()}
-                              </span>
-                            ))}
+                                >
+                                  {item.trim()}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         ) : null}
 
