@@ -2213,16 +2213,16 @@ export default function PortfolioHome() {
                   -left-[38px]
                   top-1
                   flex
-                  h-[18px]
-                  w-[18px]
+                  h-6
+                  w-6
                   items-center
                   justify-center
                   rounded-full
-                  border-[3px]
+                  border-4
                   border-white dark:border-[#444444]
                   bg-[#7ec9b5] dark:bg-[#3a3a3a]
                   shadow-[0_0_0_1px_rgba(126,201,181,0.25)] dark:shadow-[0_0_0_1px_rgba(102,102,102,0.25)]
-                  sm:-left-[34px]
+                  sm:-left-[45px]
                 "
                 />
 
