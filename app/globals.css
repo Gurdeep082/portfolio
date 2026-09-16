@@ -18,6 +18,21 @@
   --mint-200: #dff6f3;
   --mint-100: #edf9f6;
   --shadow: rgba(12, 47, 50, 0.12);
+  --portfolio-text-primary: #123d3d;
+  --portfolio-text-secondary: #587370;
+  --portfolio-text-muted: #6b8583;
+  --portfolio-text-dark: #10202d;
+  --portfolio-text-accent: #2ac7a6;
+}
+
+.portfolio-type-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.portfolio-type-muted {
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 
 @theme inline {

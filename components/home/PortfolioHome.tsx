@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -443,32 +443,32 @@ export default function PortfolioHome() {
 
   return (
     <div className="portfolio-shell min-h-screen bg-white dark:bg-transparent text-[#123d3d] dark:text-[#E0E0E0] transition-colors duration-500">
-      <div className="mx-auto max-w-[1780px] px-4 pb-10 pt-4 max-md:px-3 max-md:pb-6 max-md:pt-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1680px] px-3 pb-[30px] pt-3 max-md:px-[9px] max-md:pb-[18px] max-md:pt-[6px] sm:px-[18px] lg:px-6">
         <header
           ref={headerRef}
           className="
     sticky
     top-0
     z-50
-    mb-6
-    max-md:mb-3
-    rounded-[14px]
+    mb-[18px]
+    max-md:mb-[9px]
+    rounded-[11px]
     border
     border-[#123d3d]/10
     dark:border-[#2f2f2f]
     bg-white
     dark:bg-[#121212]/90
-    px-3
-    max-md:px-2.5
-    py-3
+    px-[9px]
+    max-md:px-[7.5px]
+    py-[9px]
     shadow-[0_4px_12px_rgba(18,61,61,0.05)]
     dark:shadow-none
     backdrop-blur-xl
-    sm:px-4
-    xl:mb-8
+    sm:px-3
+    xl:mb-6
   "
         >
-          <div className="mx-auto flex max-w-[1780px] items-center justify-between gap-4">
+          <div className="mx-auto flex max-w-[11680px] items-center justify-between gap-3">
             {/* Logo */}
             <a
               href="#home"
@@ -479,21 +479,21 @@ export default function PortfolioHome() {
                 src="/GSlogo.png"
                 alt="GS Logo"
                 className="
-          h-11
-          w-11
-          rounded-xl
+          h-[33px]
+          w-[33px]
+          rounded-[9px]
           object-contain
           dark:bg-[#1a1a1a]
           shadow-[0_6px_16px_rgba(18,61,61,0.12)]
           dark:shadow-[0_6px_16px_rgba(0,0,0,0.5)]
-          sm:h-12
-          sm:w-12
+          sm:h-9
+          sm:w-9
         "
               />
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-6 text-sm text-[#d8efeb] md:flex">
+            <nav className="hidden items-center gap-[18px] text-[12.5px] text-[#d8efeb] md:flex">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -519,11 +519,11 @@ export default function PortfolioHome() {
               aria-label="Toggle dark mode"
               className="
         flex
-        h-11
-        w-11
+        h-[33px]
+        w-[33px]
         items-center
         justify-center
-        rounded-xl
+        rounded-[9px]
         border
         border-[#123d3d]/10
         dark:border-[#2f2f2f]
@@ -560,8 +560,8 @@ export default function PortfolioHome() {
                 </svg>
               ) : (
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -579,11 +579,11 @@ export default function PortfolioHome() {
               aria-label="Toggle navigation"
               className="
         flex
-        h-11
-        w-11
+        h-[33px]
+        w-[33px]
         items-center
         justify-center
-        rounded-xl
+        rounded-[9px]
         border
         border-[#123d3d]/5
         dark:border-[#2f2f2f]
@@ -636,18 +636,18 @@ export default function PortfolioHome() {
           transition-all duration-300
           absolute
           right-0
-          top-[72px]
+          top-[54px]
           z-[100]
           w-[calc(100vw-32px)]
-          max-w-[355px]
+          max-w-[266px]
           overflow-visible
-          rounded-[14px]
+          rounded-[11px]
           border
           border-[#123d3d]/8
           dark:border-[#2f2f2f]
           bg-white
           dark:bg-[#1a1a1a]
-          p-4
+          p-3
           shadow-[0_18px_45px_rgba(18,61,61,0.14)]
           dark:shadow-[0_18px_45px_rgba(0,0,0,0.4)]
           md:hidden
@@ -876,45 +876,45 @@ export default function PortfolioHome() {
         <main>
           <section
             id="home"
-            className="relative overflow-hidden rounded-[14px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#121212] px-4 pb-8 pt-8 shadow-[0_4px_12px_rgba(18,61,61,0.05)] dark:shadow-none max-md:px-4 max-md:pb-5 max-md:pt-5 sm:px-8 lg:px-10"
+            className="relative overflow-hidden rounded-[11px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#121212] px-3 pb-6 pt-6 shadow-[0_3px_9px_rgba(18,61,61,0.05)] dark:shadow-none max-md:px-3 max-md:pb-[15px] max-md:pt-[15px] sm:px-6 lg:px-[30px]"
           >
             <div className="absolute inset-0 opacity-20 dark:opacity-70 [background-image:radial-gradient(rgba(42,199,166,0.09)_1px,transparent_0)] [background-size:18px_18px] dark:[background-image:radial-gradient(rgba(224,224,224,0.06)_1px,transparent_0)]" />
             <div className="absolute -right-12 top-6 h-32 w-32 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0]/5 dark:bg-[#1a1a1a]/40 blur-2xl" />
             <div className="absolute -left-10 bottom-0 h-36 w-36 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0]/5 dark:bg-[#1a1a1a]/30 blur-2xl" />
 
-            <div className="relative grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="relative grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="max-w-xl">
-                <p className="mb-4 text-lg font-medium text-[#2a6f6d] dark:text-[#E0E0E0]">
+                <p className="mb-3 text-[13.5px] font-medium text-[#2a6f6d] dark:text-[#E0E0E0]">
                   Hi, I&apos;m
                 </p>
-                <h1 className="text-4xl font-black leading-[0.95] tracking-[-0.06em] text-[#10202d] dark:text-[#ffffff] max-md:text-[2.65rem] sm:text-5xl lg:text-[4.1rem]">
+                <h1 className="text-3xl font-black leading-[0.95] tracking-[-0.045em] text-[#10202d] dark:text-[#ffffff] max-md:text-[2rem] sm:text-[2.25rem] lg:text-[3.075rem]">
                   Gurdeep Singh
                   <span className="mt-2 block text-[#2ac7a6] dark:text-[#E0E0E0]">
                     Software Development Engineer
                   </span>
                 </h1>
 
-                <p className="mt-5 max-w-lg text-base leading-7 text-[#4f6e6b] dark:text-[#B0B0B0] max-md:mt-4 max-md:text-[13px] max-md:leading-6 sm:text-lg">
+                <p className="mt-[15px] max-w-lg text-[12px] leading-[21px] text-[#4f6e6b] dark:text-[#B0B0B0] max-md:mt-3 max-md:text-[10px] max-md:leading-[18px] sm:text-[13.5px]">
                   I build scalable, high-performance web applications with clean
                   code and great user experiences.
                 </p>
 
-                <div className="mt-7 flex flex-col gap-3 max-md:mt-5 sm:flex-row">
+                <div className="mt-[21px] flex flex-col gap-[9px] max-md:mt-[15px] sm:flex-row">
                   <a
                     href="#projects"
-                    className="inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-xl bg-[#2ac7a6] px-5 py-3.5 text-sm font-semibold text-white shadow-[0_4px_12px_rgba(42,199,166,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#23b59f] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2ac7a6]/40 dark:bg-[#e0e0e0] dark:text-[#121212] dark:shadow-[0_8px_20px_rgb(0_0_0/20%)] dark:hover:bg-[#f2f2f2] dark:active:bg-[#c8c8c8]"
+                    className="inline-flex min-h-[33px] items-center justify-center whitespace-nowrap rounded-[9px] bg-[#2ac7a6] px-[15px] py-[10.5px] text-[10.5px] font-semibold text-white shadow-[0_3px_9px_rgba(42,199,166,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#23b59f] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2ac7a6]/40 dark:bg-[#e0e0e0] dark:text-[#121212] dark:shadow-[0_6px_15px_rgb(0_0_0/20%)] dark:hover:bg-[#f2f2f2] dark:active:bg-[#c8c8c8]"
                   >
                     View My Work
                   </a>
                   <a
                     href="#contact"
-                    className="inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-xl border border-[#2ac7a6]/30 bg-transparent px-5 py-3.5 text-sm font-semibold text-[#2ac7a6] transition duration-200 hover:-translate-y-0.5 hover:border-[#2ac7a6]/50 hover:bg-[#f0f8f6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2ac7a6]/30 dark:border-[#555555] dark:bg-[#242424] dark:text-[#e0e0e0] dark:hover:border-[#888888] dark:hover:bg-[#2f2f2f] dark:hover:text-white dark:active:bg-[#1c1c1c]"
+                    className="inline-flex min-h-[33px] items-center justify-center whitespace-nowrap rounded-[9px] border border-[#2ac7a6]/30 bg-transparent px-[15px] py-[10.5px] text-[10.5px] font-semibold text-[#2ac7a6] transition duration-200 hover:-translate-y-0.5 hover:border-[#2ac7a6]/50 hover:bg-[#f0f8f6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2ac7a6]/30 dark:border-[#555555] dark:bg-[#242424] dark:text-[#e0e0e0] dark:hover:border-[#888888] dark:hover:bg-[#2f2f2f] dark:hover:text-white dark:active:bg-[#1c1c1c]"
                   >
                     Contact Me
                   </a>
                 </div>
 
-                <div className="mt-7 flex items-center gap-4">
+                <div className="mt-[21px] flex items-center gap-3">
                   {socialLinks.map((item) => {
                     const IconComponent =
                       item.label === "GitHub"
@@ -935,7 +935,7 @@ export default function PortfolioHome() {
                             : undefined
                         }
                         className="
-                        flex h-10 w-10 items-center justify-center
+                        flex h-[30px] w-[30px] items-center justify-center
                         rounded-full
                         border border-[#003f33]/15
                         bg-[#f0f8f6]
@@ -963,7 +963,7 @@ export default function PortfolioHome() {
                         aria-label={item.label}
                       >
                         <IconComponent
-                          size={18}
+                          size={14}
                           className="transition-colors duration-300"
                         />
                       </a>
@@ -972,22 +972,22 @@ export default function PortfolioHome() {
                 </div>
               </div>
 
-              <div className="relative mx-auto w-full max-w-[680px]">
-                <div className="transition-all duration-300 relative overflow-hidden rounded-[14px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-[#f8fbfa] dark:bg-[#1a1a1a] p-5 shadow-[0_4px_12px_rgba(18,61,61,0.05)] dark:shadow-[0_22px_60px_rgba(0,0,0,0.4)] backdrop-blur-sm">
-                  <div className="mb-5 flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                    <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                    <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+              <div className="relative mx-auto w-full max-w-[510px]">
+                <div className="transition-all duration-300 relative overflow-hidden rounded-[11px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-[#f8fbfa] dark:bg-[#1a1a1a] p-[15px] shadow-[0_3px_9px_rgba(18,61,61,0.05)] dark:shadow-[0_16px_45px_rgba(0,0,0,0.4)] backdrop-blur-sm">
+                  <div className="mb-[15px] flex items-center gap-1.5">
+                    <span className="h-[9px] w-[9px] rounded-full bg-[#ff5f57]" />
+                    <span className="h-[9px] w-[9px] rounded-full bg-[#febc2e]" />
+                    <span className="h-[9px] w-[9px] rounded-full bg-[#28c840]" />
                   </div>
                   <div
                     className="
-                      rounded-[14px]
+                      rounded-[11px]
                       border border-[#2ac7a6]/20
                       bg-[#f0f8f6]
-                      p-3
+                      p-[9px]
                       font-mono
                       text-[0.7rem]
-                      leading-6
+                      leading-[18px]
                       text-[#123d3d]
                       shadow-inner shadow-[#123d3d]/5
 
@@ -996,8 +996,8 @@ export default function PortfolioHome() {
                       dark:text-[#d6d6d6]
                       dark:shadow-[#0a0a0a]/60
 
-                      sm:p-4
-                      sm:text-[0.75rem]
+                      sm:p-3
+                      sm:text-[0.5625rem]
                     "
                   >
                     <pre
@@ -1018,7 +1018,7 @@ export default function PortfolioHome() {
                       <span className="text-[#24292f] dark:text-[#D4D4D4]">= {"{"}</span>
 
                       {"\n"}
-                      <span className="inline-block pl-3 sm:pl-4">
+                      <span className="inline-block                       pl-[9px] sm:pl-3">
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">name</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
                         <span className="text-[#a31515] dark:text-[#CE9178]">
@@ -1028,7 +1028,7 @@ export default function PortfolioHome() {
                       </span>
 
                       {"\n"}
-                      <span className="inline-block pl-3 sm:pl-4">
+                      <span className="inline-block                       pl-[9px] sm:pl-3">
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">role</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
                         <span className="text-[#a31515] dark:text-[#CE9178]">
@@ -1038,7 +1038,7 @@ export default function PortfolioHome() {
                       </span>
 
                       {"\n"}
-                      <span className="inline-block pl-3 sm:pl-4">
+                      <span className="inline-block                       pl-[9px] sm:pl-3">
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">passion</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
                         <span className="text-[#a31515] dark:text-[#CE9178]">
@@ -1048,7 +1048,7 @@ export default function PortfolioHome() {
                       </span>
 
                       {"\n"}
-                      <span className="inline-block pl-3 sm:pl-4">
+                      <span className="inline-block                       pl-[9px] sm:pl-3">
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">skills</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: [</span>
 
@@ -1084,7 +1084,7 @@ export default function PortfolioHome() {
                       </span>
 
                       {"\n"}
-                      <span className="inline-block pl-3 sm:pl-4">
+                      <span className="inline-block                       pl-[9px] sm:pl-3">
                         <span className="text-[#0550ae] dark:text-[#9CDCFE]">focus</span>
                         <span className="text-[#24292f] dark:text-[#D4D4D4]">: </span>
                         <span className="text-[#a31515] dark:text-[#CE9178]">
@@ -1109,7 +1109,7 @@ export default function PortfolioHome() {
                       </span>
 
                       {"\n"}
-                      <span className="inline-block pl-4 sm:pl-6">
+                      <span className="inline-block                       pl-3 sm:pl-[18px]">
                         <span className="text-[#7c3aed] dark:text-[#C586C0]">
                           return
                         </span>{" "}
@@ -1131,10 +1131,10 @@ export default function PortfolioHome() {
           <section
             className="
       transition-all duration-300
-      mt-5
-      max-md:mt-3
+      mt-[15px]
+      max-md:mt-[9px]
       overflow-hidden
-      rounded-[14px]
+      rounded-[11px]
       border
       border-[#123d3d]/10
       dark:border-[#2f2f2f]
@@ -1155,14 +1155,14 @@ export default function PortfolioHome() {
               transition-all duration-300
               flex
               items-center
-              gap-4
-              px-5
-              py-5
-              max-md:px-3
-              max-md:py-3
-              sm:px-6
-              md:px-5
-              lg:px-7
+              gap-3
+              px-[15px]
+              py-[15px]
+              max-md:px-[9px]
+              max-md:py-[9px]
+              sm:px-[18px]
+              md:px-[15px]
+              lg:px-[21px]
               ${index % 2 !== 0 ? "border-l border-[#123d3d]/8 dark:border-[#2f2f2f]" : ""}
               ${index >= 2 ? "border-t border-[#123d3d]/8 dark:border-[#2f2f2f] md:border-t-0" : ""}
               ${index !== 0 ? "md:border-l md:border-[#123d3d]/8 dark:md:border-[#2f2f2f]" : ""}
@@ -1173,32 +1173,32 @@ export default function PortfolioHome() {
                       className="
               transition-all duration-300
               flex
-              h-12
-              w-12
+              h-11
+              w-9
               shrink-0
               items-center
               justify-center
-              rounded-[15px]
+              rounded-[11px]
               bg-[#edf7f5]
               dark:bg-[#121212]
               text-[#246d68]
               dark:text-[#E0E0E0]
             "
                     >
-                      <IconComponent size={25} strokeWidth={1.8} />
+                      <IconComponent size={19} strokeWidth={1.8} />
                     </div>
 
                     {/* Content */}
                     <div className="min-w-0">
                       <div
                         className="
-                text-lg
+                text-[13.5px]
                 font-extrabold
                 leading-none
                 tracking-[-0.03em]
                 text-[#10202d]
                 dark:text-[#E0E0E0]
-                sm:text-xl
+                sm:text-[15px]
               "
                       >
                         {card.value}
@@ -1206,9 +1206,9 @@ export default function PortfolioHome() {
 
                       <div
                         className="
-                mt-1.5
+                mt-[4.5px]
                 whitespace-nowrap
-                text-[10px]
+                text-[7.5px]
                 font-medium
                 leading-tight
                 text-[#587370]
@@ -1226,18 +1226,18 @@ export default function PortfolioHome() {
 
           <section
             id="about"
-            className="mt-8 grid gap-5 max-md:mt-5 max-md:gap-4 lg:grid-cols-2"
+            className="mt-6 grid gap-[15px] max-md:mt-[15px] max-md:gap-3 lg:grid-cols-2"
           >
-            <div className="transition-all duration-300 relative overflow-hidden             rounded-[14px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-6 text-[#123d3d] dark:text-[#E0E0E0] shadow-[0_8px_24px_rgba(18,61,61,0.05)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.2)] max-md:p-4 sm:p-7">
+            <div className="transition-all duration-300 relative overflow-hidden             rounded-[11px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-[18px] text-[#123d3d] dark:text-[#E0E0E0] shadow-[0_6px_18px_rgba(18,61,61,0.05)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.2)] max-md:p-3 sm:p-[21px]">
               {/* Decorative dotted pattern */}
               <div
                 className="
                     pointer-events-none
                     absolute
-                    bottom-5
-                    right-5
-                    h-28
-                    w-28
+                    bottom-[15px]
+                    right-[15px]
+                    h-[84px]
+                    w-[84px]
                     opacity-60
                     [background-image:radial-gradient(circle,rgba(42,199,166,0.55)_2px,transparent_2px)]
                     dark:[background-image:radial-gradient(circle,rgba(224,224,224,0.35)_2px,transparent_2px)]
@@ -1247,16 +1247,16 @@ export default function PortfolioHome() {
 
               <div className="relative z-10">
                 {/* Heading */}
-                <div className="mb-7">
-                  <h2 className="text-[28px] font-extrabold tracking-[-0.035em] text-[#0d1d2b] dark:text-[#E0E0E0] sm:text-[30px]">
+                <div className="mb-[21px]">
+                  <h2 className="text-[21px] font-extrabold tracking-[-0.035em] text-[#0d1d2b] dark:text-[#E0E0E0] sm:text-[22.5px]">
                     About Me
                   </h2>
 
-                  <div className="mt-4 h-[3px] w-16 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0]" />
+                  <div className="mt-3 h-[2px] w-12 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0]" />
                 </div>
 
                 {/* Description */}
-                <p className="max-w-[620px] text-[16px] font-medium leading-[1.85] text-[#304f5b] dark:text-[#B0B0B0]">
+                <p className="max-w-[465px] text-[12px] font-medium leading-[1.85] text-[#304f5b] dark:text-[#B0B0B0]">
                   I&apos;m a passionate Software Development Engineer who loves
                   turning ideas into real-world applications. I specialize in
                   the MERN stack and enjoy building clean, efficient, and
@@ -1264,7 +1264,7 @@ export default function PortfolioHome() {
                 </p>
 
                 {/* Resume Button */}
-                <div className="mt-8">
+                <div className="mt-6">
                  {downloadResume ? (
                 <a
                   href={downloadResume.href}
@@ -1272,18 +1272,18 @@ export default function PortfolioHome() {
                   className="
                     transition-all duration-300
                     inline-flex
-                    h-[58px]
+                    h-[43.5px]
                     items-center
                     justify-center
-                    gap-3
-                    rounded-[14px]
+                    gap-[9px]
+                    rounded-[11px]
                     border
                     border-[#123d3d]/10
                     dark:border-[#2f2f2f]
                     bg-white
                     dark:bg-[#121212]
-                    px-6
-                    text-[16px]
+                    px-[18px]
+                    text-[12px]
                     font-bold
                     text-[#10202d]
                     dark:text-[#E0E0E0]
@@ -1317,11 +1317,11 @@ export default function PortfolioHome() {
                   disabled
                   className="
                     inline-flex
-                    h-[58px]
+                    h-[43.5px]
                     items-center
                     justify-center
-                    gap-3
-                    rounded-[14px]
+                    gap-[9px]
+                    rounded-[11px]
 
                     border
                     border-[#123d3d]/10
@@ -1330,8 +1330,8 @@ export default function PortfolioHome() {
                     bg-gray-100
                     dark:bg-[#121212]
 
-                    px-6
-                    text-[16px]
+                    px-[18px]
+                    text-[12px]
                     font-bold
 
                     text-gray-400
@@ -1408,7 +1408,7 @@ export default function PortfolioHome() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className={`h-[25px] w-[25px] shrink-0 object-contain ${
+                      className={`h-[40px] w-[40px] shrink-0 object-contain ${
                         skill.name === "Git & GitHub" ||
                         skill.name === "Next.js" ||
                         skill.name === "UI/UX"
@@ -1434,8 +1434,8 @@ export default function PortfolioHome() {
             </div>
           </section>
 
-          <section id="projects" className="mt-8 max-md:mt-5">
-            <div className="mb-5 flex items-center justify-between gap-3">
+          <section id="projects" className="mt-6 max-md:mt-[15px]">
+            <div className="mb-5 flex items-center gap-4">
               <div className="flex items-center gap-3 text-2xl font-bold text-[#123d3d] dark:text-[#E0E0E0]">
                 <span className="inline-block h-[1px] w-10 bg-[#123d3d] dark:bg-[#E0E0E0]" />
                 <span>Featured Projects</span>
@@ -1489,15 +1489,15 @@ export default function PortfolioHome() {
             </div>
 
             {loading ? (
-              <div className="transition-all duration-300 rounded-[22px] border border-[#123d3d]/15 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-6 text-[#2d5a59] dark:text-[#B0B0B0]">
+              <div className="transition-all duration-300 rounded-[17px] border border-[#123d3d]/15 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-[18px] text-[#2d5a59] dark:text-[#B0B0B0]">
                 Loading projects...
               </div>
             ) : fetchError ? (
-              <div className="rounded-[22px] border border-rose-200 dark:border-rose-900/50 bg-rose-50 dark:bg-rose-900/20 p-6 text-rose-700 dark:text-rose-300">
+              <div className="rounded-[17px] border border-rose-200 dark:border-rose-900/50 bg-rose-50 dark:bg-rose-900/20 p-[18px] text-rose-700 dark:text-rose-300">
                 {fetchError}
               </div>
             ) : (
-              <div className="grid items-start justify-start gap-4 max-md:flex max-md:w-full max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:overscroll-x-contain max-md:pb-2 md:grid-cols-[minmax(0,358px)_minmax(0,358px)]">
+              <div className="grid items-start justify-start gap-3 max-md:flex max-md:w-full max-md:snap-x max-md:snap-mandatory max-md:gap-[9px] max-md:overflow-x-auto max-md:overscroll-x-contain max-md:pb-1.5 md:grid-cols-[minmax(0,269px)_minmax(0,269px)]">
                 {projectList.map((project, index) => {
                   const projectKey = project._id ?? `${project.title}-${index}`;
 
@@ -1529,17 +1529,17 @@ export default function PortfolioHome() {
                         h-fit
                         min-h-0
                         w-full
-                        max-w-[358px]
+                        max-w-[269px]
                         justify-self-start
                         max-md:flex-none
                         max-md:snap-center
                         max-md:w-[80%]
-                        max-md:max-w-[286px]
-                        max-md:h-[400px]
+                        max-md:max-w-[215px]
+                        max-md:h-[270px]
                         flex-col
                         overflow-hidden
-                        rounded-[18px]
-                        max-md:rounded-[14px]
+                        rounded-[14px]
+                        max-md:rounded-[11px]
                         border
                         border-[#123d3d]/10
                         bg-white
@@ -1555,7 +1555,7 @@ export default function PortfolioHome() {
                         dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.35)]
                         "
                     >
-                      <div className="relative h-[11.2rem] w-full shrink-0 overflow-hidden rounded-t-[18px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-1/2 max-md:rounded-t-[14px]">
+                      <div className="relative h-[7.56rem] w-full shrink-0 overflow-hidden rounded-t-[14px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-1/2 max-md:rounded-t-[11px]">
                         {/* Images */}
                         {images.length > 0 ? (
                           images.map((imageSource, imageIndex) => (
@@ -1610,12 +1610,12 @@ export default function PortfolioHome() {
                           <div
                             className="
                             absolute
-                            bottom-4
-                            left-4
+                            bottom-3
+                            left-3
                             z-10
                             flex
                             items-center
-                            gap-1.5
+                            gap-1
                             max-md:hidden
                           "
                           >
@@ -1633,7 +1633,7 @@ export default function PortfolioHome() {
                                   }))
                                 }
                                 className={`
-                                h-1.5
+                                h-[5.4px]
                                 rounded-full
                                 transition-all
                                 duration-300
@@ -1707,8 +1707,8 @@ export default function PortfolioHome() {
                                 px-2
                                 py-1.5
                                 text-[12px]
-                                max-md:px-1.5
-                                max-md:py-1
+                                max-md:px-2
+                                max-md:py-1.5
                                 max-md:text-[9px]
                                 max-md:shrink-0
                                 font-semibold
@@ -1749,7 +1749,7 @@ export default function PortfolioHome() {
                             className="
                             group/demo
                             inline-flex
-                            min-h-11 max-md:min-h-8
+                            min-h-11
                             flex-1
                             items-center
                             justify-center
@@ -1758,7 +1758,7 @@ export default function PortfolioHome() {
                             bg-[#2ac7a6]
                             dark:bg-[#c7c7c7]
                             px-2.5
-                            py-2.5
+                            py-[9px]
                             text-xs
                             max-md:px-1.5
                             max-md:py-1.5
@@ -1782,8 +1782,8 @@ export default function PortfolioHome() {
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
-                              width="17"
-                              height="17"
+                              width="15.3"
+                              height="15.3"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="2.8"
@@ -1816,7 +1816,7 @@ export default function PortfolioHome() {
                             }
                             className="
                             inline-flex
-                            min-h-11 max-md:min-h-8
+                            min-h-11
                             flex-1
                             items-center
                             justify-center
@@ -1828,7 +1828,7 @@ export default function PortfolioHome() {
                             bg-white
                             dark:bg-[#121212]
                             px-2.5
-                            py-2.5
+                            py-[9px]
                             text-xs
                             max-md:px-1.5
                             max-md:py-1.5
@@ -1852,8 +1852,8 @@ export default function PortfolioHome() {
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
-                              width="20"
-                              height="20"
+                              width="18"
+                              height="18"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="1.8"
@@ -1882,25 +1882,25 @@ export default function PortfolioHome() {
             id="experience"
             className="
             transition-all duration-300
-            mt-8
-            rounded-[14px]
+            mt-6
+            rounded-[11px]
             border
             border-[#123d3d]/10
             dark:border-[#2f2f2f]
             bg-white
             dark:bg-[#1a1a1a]
-            p-5
+            p-[15px]
             text-[#123d3d]
             dark:text-[#E0E0E0]
             shadow-[0_12px_32px_rgba(18,61,61,0.06)]
             dark:shadow-[0_12px_32px_rgba(0,0,0,0.2)]
-            sm:p-6
+            sm:p-[18px]
           "
           >
             {/* Header */}
             <div className="mb-7">
               <div className="flex items-center gap-3">
-                <h2 className="text-2xl font-extrabold tracking-[-0.035em] text-[#10202d] dark:text-[#E0E0E0]">
+                <h2 className="text-[18px] font-extrabold tracking-[-0.035em] text-[#10202d] dark:text-[#E0E0E0]">
                   Experience & Education
                 </h2>
 
@@ -1946,7 +1946,7 @@ export default function PortfolioHome() {
                       Experience
                     </p>
 
-                    <h3 className="text-xl font-extrabold tracking-[-0.025em] text-[#123d3d] dark:text-[#E0E0E0]">
+                    <h3 className="text-[15px] font-extrabold tracking-[-0.025em] text-[#123d3d] dark:text-[#E0E0E0]">
                       Software Developer Intern
                     </h3>
 
@@ -1966,7 +1966,7 @@ export default function PortfolioHome() {
                     dark:bg-[#121212]
                     px-3
                     py-1.5
-                    text-[10px]
+                    text-xs
                     font-bold
                     uppercase
                     tracking-[0.12em]
@@ -1987,7 +1987,7 @@ export default function PortfolioHome() {
                 </p>
 
                 {/* Responsibilities */}
-                <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                <ul className="mt-5 grid gap-x-5 gap-y-2 sm:grid-cols-2">
                   {[
                     "Developed and maintained responsive web applications using Next.js, React.js, Tailwind CSS, and modern frontend technologies.",
                     "Led frontend development and UI/UX implementation by building modern, responsive, and reusable components.",
@@ -1996,20 +1996,12 @@ export default function PortfolioHome() {
                     "Worked on Webzark projects including BizBiteNow, Rushberry, Sellexa, and affiliate marketing platforms.",
                     "Used Git/GitHub for version control, feature development, bug fixing, and collaborative development.",
                   ].map((item) => (
-                    <div
+                    <li
                       key={item}
                       className="
                       flex
                       items-start
                       gap-2.5
-                      rounded-xl
-                      border
-                      border-[#123d3d]/8
-                      dark:border-[#2f2f2f]
-                      bg-[#f8fbfa]
-                      dark:bg-[#121212]
-                      px-3.5
-                      py-3
                     "
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0] dark:bg-[#888888]" />
@@ -2017,9 +2009,9 @@ export default function PortfolioHome() {
                       <span className="text-xs leading-5 text-[#4f6e6b] dark:text-[#B0B0B0]">
                         {item}
                       </span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
                 {/* Technologies */}
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -2082,7 +2074,7 @@ export default function PortfolioHome() {
                       Education
                     </p>
 
-                    <h3 className="text-xl font-extrabold tracking-[-0.025em] text-[#123d3d] dark:text-[#E0E0E0]">
+                    <h3 className="text-[15px] font-extrabold tracking-[-0.025em] text-[#123d3d] dark:text-[#E0E0E0]">
                       Bachelor of Engineering
                     </h3>
 
@@ -2154,16 +2146,16 @@ export default function PortfolioHome() {
                   -left-[38px]
                   top-1
                   flex
-                  h-6
-                  w-6
+                  h-[18px]
+                  w-[18px]
                   items-center
                   justify-center
                   rounded-full
-                  border-4
+                  border-[3px]
                   border-white dark:border-[#444444]
                   bg-[#7ec9b5] dark:bg-[#3a3a3a]
                   shadow-[0_0_0_1px_rgba(126,201,181,0.25)] dark:shadow-[0_0_0_1px_rgba(102,102,102,0.25)]
-                  sm:-left-[45px]
+                  sm:-left-[34px]
                 "
                 />
 
@@ -2238,59 +2230,59 @@ export default function PortfolioHome() {
             id="contact"
             className="
             relative
-            mt-8
+            mt-6
             overflow-hidden
-            rounded-[14px]
+            rounded-[11px]
             border
             border-[#123d3d]/10
             dark:border-[#2b2b2b]
             bg-[linear-gradient(135deg,#f8fcfb_0%,#edf7f5_50%,#ffffff_100%)]
             dark:bg-[#1a1a1a]
             dark:bg-none
-            p-5
+            p-[15px]
             text-[#123d3d]
             dark:text-[#e6e6e6]
             shadow-[0_18px_50px_rgba(18,61,61,0.07)]
             dark:shadow-[0_18px_50px_rgba(0,0,0,0.45)]
-            max-md:mt-5
-            max-md:rounded-[14px]
-            max-md:p-4
-            sm:p-7
-            lg:p-9
+            max-md:mt-[15px]
+            max-md:rounded-[11px]
+            max-md:p-3
+            sm:p-[21px]
+            lg:p-[27px]
           "
           >
             {/* Decorative elements */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#2ac7a6] dark:bg-[#ffffff]/5 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-[#123d3d]/5 dark:bg-[#ffffff]/3 blur-3xl" />
+            <div className="pointer-events-none absolute -right-[15px] -top-[15px] h-48 w-48 rounded-full bg-[#2ac7a6] dark:bg-[#ffffff]/5 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-[18px] -left-[15px] h-48 w-48 rounded-full bg-[#123d3d]/5 dark:bg-[#ffffff]/3 blur-3xl" />
 
-            <div className="relative grid gap-6 max-md:gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+            <div className="relative grid gap-[18px] max-md:gap-[15px] lg:grid-cols-[0.85fr_1.15fr] lg:gap-9">
               <div className="flex flex-col justify-between">
                 <div>
                   {/* Label */}
-                  <div className="mb-5 flex items-center gap-3">
-                    <span className="h-[2px] w-8 rounded-full bg-[#2ac7a6] dark:bg-[#2ac7a6]" />
+                  <div className="mb-[15px] flex items-center gap-[9px]">
+                    <span className="h-[1.5px] w-6 rounded-full bg-[#2ac7a6] dark:bg-[#2ac7a6]" />
 
-                    <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#2ac7a6] dark:text-[#d0d0d0]">
+                    <p className="text-[8.25px] font-bold uppercase tracking-[0.1875em] text-[#2ac7a6] dark:text-[#d0d0d0]">
                       Get in touch
                     </p>
                   </div>
 
                   {/* Heading */}
-                  <h3 className="max-w-md text-[2.5rem] font-black leading-[1.05] tracking-[-0.03em] text-[#10202d] dark:text-[#f2f2f2] max-md:text-[2rem] sm:text-[3rem]">
+                  <h3 className="max-w-md text-[1.875rem] font-black leading-[1.05] tracking-[-0.03em] text-[#10202d] dark:text-[#f2f2f2] max-md:text-[1.5rem] sm:text-[2.25rem]">
                     Let&apos;s build
                     <span className="block text-[#123d3d] dark:text-[#e6e6e6]">
                       something great.
                     </span>
                   </h3>
 
-                  <p className="mt-5 max-w-md text-[15px] leading-7 text-[#58706f] dark:text-[#a0a0a0] max-md:mt-4 max-md:text-[13px] max-md:leading-6">
+                  <p className="portfolio-type-body mt-[15px] max-w-md text-[#58706f] dark:text-[#a0a0a0] max-md:mt-3">
                     Have an idea, project, or opportunity in mind? I&apos;d love
                     to hear about it and turn it into something meaningful.
                   </p>
                 </div>
 
                 {/* Contact details */}
-                <div className="mt-8 space-y-2.5 max-md:mt-6">
+                <div className="mt-6 space-y-2 max-md:mt-[18px]">
                   {/* Phone */}
                   <a
                     href={`tel:${contactPhone.replace(/\s+/g, "")}`}
@@ -2299,15 +2291,15 @@ export default function PortfolioHome() {
                     group
                     flex
                     items-center
-                    gap-4
-                    rounded-2xl
+                    gap-3
+                    rounded-[12px]
                     border
                     border-[#123d3d]/8
                     dark:border-[#2b2b2b]
                     bg-white/75
                     dark:bg-[#1c1c1c]
                     dark:bg-none
-                    p-3.5
+                    p-[10.5px]
                     backdrop-blur-sm
                     transition-all
                     duration-200
@@ -2320,7 +2312,7 @@ export default function PortfolioHome() {
                     dark:hover:shadow-[0_10px_24px_rgba(0,0,0,0.45)]
                   "
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
+                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
                       <svg
                         width="18"
                         height="18"
@@ -2357,15 +2349,15 @@ export default function PortfolioHome() {
                     group
                     flex
                     items-center
-                    gap-4
-                    rounded-2xl
+                    gap-3
+                    rounded-[12px]
                     border
                     border-[#123d3d]/8
                     dark:border-[#2b2b2b]
                     bg-white/75
                     dark:bg-[#1c1c1c]
                     dark:bg-none
-                    p-3.5
+                    p-[10.5px]
                     backdrop-blur-sm
                     transition-all
                     duration-200
@@ -2378,7 +2370,7 @@ export default function PortfolioHome() {
                     dark:hover:shadow-[0_10px_24px_rgba(0,0,0,0.45)]
                   "
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
+                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
                       <svg
                         width="18"
                         height="18"
@@ -2418,15 +2410,15 @@ export default function PortfolioHome() {
                     group
                     flex
                     items-center
-                    gap-4
-                    rounded-2xl
+                    gap-3
+                    rounded-[12px]
                     border
                     border-[#123d3d]/8
                     dark:border-[#2b2b2b]
                     bg-white/75
                     dark:bg-[#1c1c1c]
                     dark:bg-none
-                    p-3.5
+                    p-[10.5px]
                     backdrop-blur-sm
                     transition-all
                     duration-200
@@ -2439,7 +2431,7 @@ export default function PortfolioHome() {
                     dark:hover:shadow-[0_10px_24px_rgba(0,0,0,0.45)]
                   "
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
+                    <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] bg-[#edf7f5] dark:bg-[#242424] text-[#123d3d] dark:text-[#d0d0d0]">
                     <svg
                       width="22"
                       height="22"
@@ -2491,7 +2483,7 @@ export default function PortfolioHome() {
               >
                 {/* Form heading */}
                 <div className="mb-6">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2ac7a6] dark:text-[#d0d0d0]">
+                  <p className="portfolio-type-muted font-bold text-[#2ac7a6] dark:text-[#d0d0d0]">
                     Start a conversation
                   </p>
 
@@ -2518,7 +2510,7 @@ export default function PortfolioHome() {
                       }
                       className="
                       mt-2
-                      h-12
+                      h-9
                       w-full
                       rounded-xl
                       border
@@ -2561,7 +2553,7 @@ export default function PortfolioHome() {
                         })
                       }                        className="
                         mt-2
-                        h-12
+                        h-9
                         w-full
                         rounded-xl
                         border
@@ -2607,7 +2599,7 @@ export default function PortfolioHome() {
                     }
                     className="
                     mt-2
-                    h-12
+                    h-9
                     w-full
                     rounded-xl
                     border
@@ -2688,7 +2680,7 @@ export default function PortfolioHome() {
                     type="submit"
                     className="group
                       inline-flex
-                      h-12
+                      h-11
                       min-h-11
                       w-auto
                       shrink-0
@@ -2757,7 +2749,8 @@ export default function PortfolioHome() {
                     className="
                     group
                     inline-flex
-                    h-12
+                    h-11
+                    min-h-11
                     w-50%
                     items-center
                     justify-center
@@ -2856,11 +2849,11 @@ export default function PortfolioHome() {
         <footer
           id="contact-footer"
           className="
-          mt-8
-          rounded-[14px]
+          mt-6
+          rounded-[11px]
           border border-[#003f33]/10
           bg-white
-          px-4 py-6
+          px-3 py-[18px]
           text-[#003f33]
           shadow-[0_8px_24px_rgba(0,63,51,0.05)]
           transition-all duration-300
@@ -2870,8 +2863,8 @@ export default function PortfolioHome() {
           dark:text-[#E0E0E0]
           dark:shadow-[0_8px_24px_rgba(0,0,0,0.2)]
 
-          sm:px-7
-          sm:py-8
+          sm:px-[21px]
+          sm:py-6
         "
         >
           {/* ================= DESKTOP ================= */}
@@ -2880,7 +2873,7 @@ export default function PortfolioHome() {
             hidden
             md:grid
             md:grid-cols-[1.2fr_0.9fr_0.9fr_0.9fr]
-            md:gap-8
+            md:gap-6
           "
           >
             {/* Brand */}
@@ -2889,9 +2882,9 @@ export default function PortfolioHome() {
                 src="/GSlogo.png"
                 alt="GS Logo"
                 className="
-                  h-12
-                  w-12
-                  rounded-xl
+                  h-9
+                  w-9
+                  rounded-[9px]
                   bg-white
                   object-contain
                   shadow-[0_8px_18px_rgba(0,63,51,0.25)]
@@ -2912,7 +2905,7 @@ export default function PortfolioHome() {
                   rel="noreferrer"
                   aria-label="GitHub"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -2929,7 +2922,7 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Github size={18} strokeWidth={2} />
+                  <Github size={14} strokeWidth={2} />
                 </a>
 
                 <a
@@ -2938,7 +2931,7 @@ export default function PortfolioHome() {
                   rel="noreferrer"
                   aria-label="LinkedIn"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -2955,14 +2948,14 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Linkedin size={18} strokeWidth={2} />
+                  <Linkedin size={14} strokeWidth={2} />
                 </a>
 
                 <a
                   href="mailto:sainigurdeep082@gmail.com"
                   aria-label="Email"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -2979,7 +2972,7 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Mail size={18} strokeWidth={2} />
+                  <Mail size={14} strokeWidth={2} />
                 </a>
               </div>
             </div>
@@ -3087,10 +3080,10 @@ export default function PortfolioHome() {
                   src="/GSlogo.png"
                   alt="GS Logo"
                   className="
-            h-11
-            w-11
+            h-[33px]
+            w-[33px]
             shrink-0
-            rounded-xl
+            rounded-[9px]
             bg-white
             object-contain
             shadow-[0_6px_16px_rgba(0,63,51,0.2)]
@@ -3112,7 +3105,7 @@ export default function PortfolioHome() {
                   rel="noreferrer"
                   aria-label="GitHub"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -3129,7 +3122,7 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Github size={18} strokeWidth={2} />
+                  <Github size={14} strokeWidth={2} />
                 </a>
 
                 <a
@@ -3138,7 +3131,7 @@ export default function PortfolioHome() {
                   rel="noreferrer"
                   aria-label="LinkedIn"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -3155,14 +3148,14 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Linkedin size={18} strokeWidth={2} />
+                  <Linkedin size={14} strokeWidth={2} />
                 </a>
 
                 <a
                   href="mailto:sainigurdeep082@gmail.com"
                   aria-label="Email"
                   className="
-                  flex h-10 w-10 items-center justify-center
+                  flex h-[30px] w-[30px] items-center justify-center
                   rounded-full
                   border border-[#003f33]/15
                   text-[#003f33]
@@ -3179,7 +3172,7 @@ export default function PortfolioHome() {
                   dark:hover:text-[#E0E0E0]
                 "
                 >
-                  <Mail size={18} strokeWidth={2} />
+                  <Mail size={14} strokeWidth={2} />
                 </a>
               </div>
             </div>
