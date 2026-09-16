@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "Gurdeep Singh Portfolio",
+    title: "Gurdeep",
     statusBarStyle: "black-translucent",
   },
   formatDetection: {

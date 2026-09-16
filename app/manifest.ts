@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Gurdeep Singh Portfolio",
-    short_name: "Gurdeep Portfolio",
+    name: "Gurdeep",
+    short_name: "Gurdeep",
     description:
       "Gurdeep Singh - Full Stack Developer specializing in MERN stack.",
     start_url: "/",
