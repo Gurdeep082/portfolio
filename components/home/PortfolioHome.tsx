@@ -210,6 +210,21 @@ export default function PortfolioHome() {
   const toggleFooterSection = (section: string) => {
     setOpenFooterSection((current) => (current === section ? null : section));
   };
+  const handleSectionNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
+
+    event.preventDefault();
+    window.dispatchEvent(
+      new CustomEvent("portfolio:scroll-to", {
+        detail: { selector: href },
+      }),
+    );
+  };
   const [activeImageIndexes, setActiveImageIndexes] = useState<
     Record<string, number>
   >({});
@@ -327,6 +342,33 @@ export default function PortfolioHome() {
     sections.forEach((section) => {
       if (section) observer.observe(section);
     });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const revealItems = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
   }, []);
@@ -468,7 +510,7 @@ export default function PortfolioHome() {
     xl:mb-6
   "
         >
-          <div className="mx-auto flex max-w-[11680px] items-center justify-between gap-3">
+          <div className="mx-auto flex max-w-[1680px] items-center justify-between gap-3">
             {/* Logo */}
             <a
               href="#home"
@@ -493,11 +535,12 @@ export default function PortfolioHome() {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-[18px] text-[12.5px] text-[#d8efeb] md:flex">
+            <nav className="hidden items-center gap-[18px] text-[10.5px] text-[#d8efeb] md:flex">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(event) => handleSectionNavigation(event, item.href)}
                   className="
             font-medium
             text-[#285B59]
@@ -560,8 +603,8 @@ export default function PortfolioHome() {
                 </svg>
               ) : (
                 <svg
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -775,7 +818,10 @@ export default function PortfolioHome() {
                       <a
                         key={item.label}
                         href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={(event) => {
+                          handleSectionNavigation(event, item.href);
+                          setMobileMenuOpen(false);
+                        }}
                         className={`
                   flex
                   h-[60px]
@@ -1173,7 +1219,7 @@ export default function PortfolioHome() {
                       className="
               transition-all duration-300
               flex
-              h-11
+              h-9
               w-9
               shrink-0
               items-center
@@ -1225,10 +1271,11 @@ export default function PortfolioHome() {
           </section>
 
           <section
+            data-reveal
             id="about"
             className="mt-6 grid gap-[15px] max-md:mt-[15px] max-md:gap-3 lg:grid-cols-2"
           >
-            <div className="transition-all duration-300 relative overflow-hidden             rounded-[11px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-[18px] text-[#123d3d] dark:text-[#E0E0E0] shadow-[0_6px_18px_rgba(18,61,61,0.05)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.2)] max-md:p-3 sm:p-[21px]">
+            <div className="transition-all duration-300 relative flex flex-col overflow-hidden             rounded-[11px] border border-[#123d3d]/10 dark:border-[#2f2f2f] bg-white dark:bg-[#1a1a1a] p-[18px] text-[#123d3d] dark:text-[#E0E0E0] shadow-[0_6px_18px_rgba(18,61,61,0.05)] dark:shadow-[0_6px_18px_rgba(0,0,0,0.2)] max-md:p-3 sm:p-[21px]">
               {/* Decorative dotted pattern */}
               <div
                 className="
@@ -1245,7 +1292,7 @@ export default function PortfolioHome() {
                     "
               />
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex h-full flex-col">
                 {/* Heading */}
                 <div className="mb-[21px]">
                   <h2 className="text-[21px] font-extrabold tracking-[-0.035em] text-[#0d1d2b] dark:text-[#E0E0E0] sm:text-[22.5px]">
@@ -1264,7 +1311,7 @@ export default function PortfolioHome() {
                 </p>
 
                 {/* Resume Button */}
-                <div className="mt-6">
+                <div className="mt-auto pt-6">
                  {downloadResume ? (
                 <a
                   href={downloadResume.href}
@@ -1354,50 +1401,49 @@ export default function PortfolioHome() {
               id="skills"
               className="
                 transition-all duration-300
-                rounded-[14px]
+                rounded-[11px]
                 border
                 border-[#123d3d]/10
                 dark:border-[#2f2f2f]
                 bg-white
                 dark:bg-[#1a1a1a]
-                p-5
+                p-[18px]
                 text-[#123d3d]
                 dark:text-[#E0E0E0]
                 shadow-[0_6px_18px_rgba(18,61,61,0.05)]
                 dark:shadow-[0_6px_18px_rgba(0,0,0,0.2)]
-                max-md:p-4
-                sm:p-6
+                max-md:p-3
+                sm:p-[21px]
             "
             >
               {/* Heading */}
-              <div className="mb-5">
-                <h2 className="text-[28px] font-extrabold tracking-[-0.02em] text-[#10202d] dark:text-[#E0E0E0]">
+              <div className="mb-[21px]">
+                <h2 className="text-[21px] font-extrabold tracking-[-0.035em] text-[#10202d] dark:text-[#E0E0E0] sm:text-[22.5px]">
                   Skills
                 </h2>
 
-                <div className="mt-2.5 h-[3px] w-8 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0] dark:bg-[#E0E0E0]" />
+                <div className="mt-3 h-[2px] w-12 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0]" />
               </div>
 
               {/* Skills Grid */}
-              <div className="grid grid-cols-2 gap-2.5 max-md:gap-2 sm:grid-cols-4">
+              <div className="grid grid-cols-2 gap-[9px] max-md:gap-2 sm:grid-cols-4">
                 {skillItems.map((skill) => (
                   <div
                     key={skill.name}
                     className="
                         transition-all duration-300
                         flex
-                        h-[58px]
+                        h-[43.5px]
                         items-center
-                        gap-3
-                        rounded-[8px]
+                        gap-[9px]
+                        rounded-[7px]
                         border
                         border-[#dfe7e7]
                         dark:border-[#2f2f2f]
                         bg-white
                         dark:bg-[#121212]
-                        px-3.5
+                        px-[10.5px]
                         hover:border-[#2ac7a6]/40
-                        dark:hover:border-[#555555]
                         dark:hover:border-[#555555]
                         hover:bg-[#f7fbfa]
                         dark:hover:bg-[#242424]
@@ -1408,7 +1454,7 @@ export default function PortfolioHome() {
                     <img
                       src={skill.icon}
                       alt={skill.name}
-                      className={`h-[40px] w-[40px] shrink-0 object-contain ${
+                      className={`h-[19px] w-[19px] shrink-0 object-contain ${
                         skill.name === "Git & GitHub" ||
                         skill.name === "Next.js" ||
                         skill.name === "UI/UX"
@@ -1420,7 +1466,7 @@ export default function PortfolioHome() {
                     <span
                       className="
                         truncate
-                        text-[13px]
+                        text-[12px]
                         font-semibold
                         text-[#172733]
                         dark:text-[#d6d6d6]
@@ -1434,8 +1480,9 @@ export default function PortfolioHome() {
             </div>
           </section>
 
-          <section id="projects" className="mt-6 max-md:mt-[15px]">
-            <div className="mb-5 flex items-center gap-4">
+          <section           data-reveal
+          id="projects" className="mt-6 max-md:mt-[15px]">
+            <div className="mb-5 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 text-2xl font-bold text-[#123d3d] dark:text-[#E0E0E0]">
                 <span className="inline-block h-[1px] w-10 bg-[#123d3d] dark:bg-[#E0E0E0]" />
                 <span>Featured Projects</span>
@@ -1526,20 +1573,20 @@ export default function PortfolioHome() {
                         project-card
                         group
                         flex
-                        h-fit
+                        h-[360px]
                         min-h-0
                         w-full
-                        max-w-[269px]
+                        max-w-[248.325px]
                         justify-self-start
                         max-md:flex-none
                         max-md:snap-center
                         max-md:w-[80%]
-                        max-md:max-w-[215px]
-                        max-md:h-[270px]
+                        max-md:max-w-[198.66px]
+                        max-md:h-[194px]
                         flex-col
                         overflow-hidden
-                        rounded-[14px]
-                        max-md:rounded-[11px]
+                        rounded-[11px]
+                        max-md:rounded-[9px]
                         border
                         border-[#123d3d]/10
                         bg-white
@@ -1555,7 +1602,7 @@ export default function PortfolioHome() {
                         dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.35)]
                         "
                     >
-                      <div className="relative h-[7.56rem] w-full shrink-0 overflow-hidden rounded-t-[14px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-1/2 max-md:rounded-t-[11px]">
+                      <div className="relative h-[40%] w-full shrink-0 overflow-hidden rounded-t-[11px] bg-[#eef6f4] dark:bg-[#121212] max-md:rounded-t-[9px]">
                         {/* Images */}
                         {images.length > 0 ? (
                           images.map((imageSource, imageIndex) => (
@@ -1633,7 +1680,7 @@ export default function PortfolioHome() {
                                   }))
                                 }
                                 className={`
-                                h-[5.4px]
+                                h-1.5
                                 rounded-full
                                 transition-all
                                 duration-300
@@ -1653,12 +1700,12 @@ export default function PortfolioHome() {
                         CONTENT
                     ====================================== */}
 
-                      <div className="flex min-h-0 flex-col p-4 max-md:h-1/2 max-md:overflow-hidden max-md:p-2.5 sm:p-5">
+                      <div className="flex h-[60%] min-h-0 flex-col overflow-hidden p-[13px] max-md:p-2 sm:p-4">
                         {/* Title */}
                         <div className="mb-3 max-md:mb-2">
                           <h3
                             className="
-                            line-clamp-1 text-[24px] max-md:text-[19px]
+                            line-clamp-1 text-[19px] max-md:text-[15px]
                             font-extrabold
                             tracking-[-0.035em]
                             text-[#10202d]
@@ -1672,7 +1719,7 @@ export default function PortfolioHome() {
                             {project.title}
                           </h3>
 
-                          <p className="mt-1 text-[13px] font-medium text-[#64748b] dark:text-[#B0B0B0] max-md:text-[10px]">
+                          <p className="mt-1 text-[10.5px] font-medium text-[#64748b] dark:text-[#B0B0B0] max-md:text-[8px]">
                           Web Platform
                           </p>
                         </div>
@@ -1681,7 +1728,7 @@ export default function PortfolioHome() {
                         <p
                           className="
                             line-clamp-2
-                            text-[14px] max-md:text-[9px]
+                            text-[11px] max-md:text-[7px]
                             leading-[1.5] max-md:leading-[1.35]
                             text-[#536b72]
                             dark:text-[#B0B0B0]
@@ -1692,8 +1739,8 @@ export default function PortfolioHome() {
 
                         {/* Stack */}
                         {project.stack ? (
-                          <div className="mt-4 max-md:mt-2.5">
-                            <div className="flex min-w-0 flex-nowrap gap-2 overflow-hidden max-md:gap-1">
+                          <div className="mt-3 max-md:mt-2">
+                            <div className="flex min-w-0 flex-nowrap gap-1 overflow-hidden max-md:gap-0.5">
                               {project.stack.split(",").slice(0, 6).map((item) => (
                                 <span
                                   key={item}
@@ -1704,12 +1751,11 @@ export default function PortfolioHome() {
                                 dark:border-[#2f2f2f]
                                 bg-[#f2f9f7]
                                 dark:bg-[#121212]
-                                px-2
-                                py-1.5
-                                text-[12px]
-                                max-md:px-2
-                                max-md:py-1.5
-                                max-md:text-[9px]
+                                px-1
+                                py-0.5
+                                text-[8.5px]
+                                max-md:px-0.5
+                                max-md:text-[6.5px]
                                 max-md:shrink-0
                                 font-semibold
                                 text-[#28615f]
@@ -1728,10 +1774,10 @@ export default function PortfolioHome() {
                         ) : null}
 
                         {/* Divider */}
-                        <div className="mt-5 mb-4 h-px bg-[#123d3d]/10 dark:bg-[#1a1a1a] max-md:mt-3 max-md:mb-2.5" />
+                        <div className="mt-auto mb-3 h-px bg-[#123d3d]/10 dark:bg-[#1a1a1a] max-md:mb-2" />
 
                         {/* Actions */}
-                        <div className="flex gap-2.5 max-md:gap-1.5">
+                        <div className="flex gap-2 max-md:gap-1">
                           <a
                             href={
                               project.demoLink || project.link || "#contact"
@@ -1746,19 +1792,14 @@ export default function PortfolioHome() {
                                 ? "noreferrer"
                                 : undefined
                             }
-                            className="
-                            group/demo
-                            inline-flex
-                            min-h-11
-                            flex-1
-                            items-center
+                            className="group/demo inline-flex flex-1 items-center
                             justify-center
                             gap-1.5
-                            rounded-xl
+                            rounded-[9px]
                             bg-[#2ac7a6]
                             dark:bg-[#c7c7c7]
-                            px-2.5
-                            py-[9px]
+                            px-2
+                            py-2
                             text-xs
                             max-md:px-1.5
                             max-md:py-1.5
@@ -1782,8 +1823,8 @@ export default function PortfolioHome() {
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
-                              width="15.3"
-                              height="15.3"
+                              width="17"
+                              height="17"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="2.8"
@@ -1816,32 +1857,32 @@ export default function PortfolioHome() {
                             }
                             className="
                             inline-flex
-                            min-h-11
+                            min-h-11 max-md:min-h-8
                             flex-1
                             items-center
                             justify-center
                             gap-1.5
-                            rounded-xl
+                            rounded-[9px]
                             border
                             border-[#123d3d]/15
                             dark:border-[#2f2f2f]
                             bg-white
-                            dark:bg-[#121212]
-                            px-2.5
-                            py-[9px]
+                            dark:bg-[#bdbdbd]
+                            px-2
+                            py-2
                             text-xs
                             max-md:px-1.5
                             max-md:py-1.5
                             max-md:text-[10px]
                             font-bold
                             text-[#123d3d]
-                            dark:text-[#E0E0E0]
+                            dark:text-black
                             transition-all
                             duration-200
                             hover:border-[#888888]
                             dark:hover:border-[#555555]
                             hover:bg-[#f3faf8]
-                            dark:hover:bg-[#242424]
+                            dark:hover:bg-[#e0e0e0]
                             dark:active:bg-[#1c1c1c]
                             focus-visible:outline-none
                             focus-visible:ring-4
@@ -1852,8 +1893,8 @@ export default function PortfolioHome() {
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
-                              width="18"
-                              height="18"
+                              width="20"
+                              height="20"
                               fill="none"
                               stroke="currentColor"
                               strokeWidth="1.8"
@@ -1879,6 +1920,7 @@ export default function PortfolioHome() {
           </section>
 
           <section
+            data-reveal
             id="experience"
             className="
             transition-all duration-300
@@ -1966,7 +2008,7 @@ export default function PortfolioHome() {
                     dark:bg-[#121212]
                     px-3
                     py-1.5
-                    text-xs
+                    text-[10px]
                     font-bold
                     uppercase
                     tracking-[0.12em]
@@ -1987,7 +2029,7 @@ export default function PortfolioHome() {
                 </p>
 
                 {/* Responsibilities */}
-                <ul className="mt-5 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+                <div className="mt-5 grid gap-2 sm:grid-cols-2">
                   {[
                     "Developed and maintained responsive web applications using Next.js, React.js, Tailwind CSS, and modern frontend technologies.",
                     "Led frontend development and UI/UX implementation by building modern, responsive, and reusable components.",
@@ -1996,12 +2038,20 @@ export default function PortfolioHome() {
                     "Worked on Webzark projects including BizBiteNow, Rushberry, Sellexa, and affiliate marketing platforms.",
                     "Used Git/GitHub for version control, feature development, bug fixing, and collaborative development.",
                   ].map((item) => (
-                    <li
+                    <div
                       key={item}
                       className="
                       flex
                       items-start
                       gap-2.5
+                      rounded-xl
+                      border
+                      border-[#123d3d]/8
+                      dark:border-[#2f2f2f]
+                      bg-[#f8fbfa]
+                      dark:bg-[#121212]
+                      px-3.5
+                      py-3
                     "
                     >
                       <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0] dark:bg-[#888888]" />
@@ -2009,9 +2059,9 @@ export default function PortfolioHome() {
                       <span className="text-xs leading-5 text-[#4f6e6b] dark:text-[#B0B0B0]">
                         {item}
                       </span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
                 {/* Technologies */}
                 <div className="mt-5 flex flex-wrap gap-2">
@@ -2227,6 +2277,7 @@ export default function PortfolioHome() {
           </section>
 
           <section
+            data-reveal
             id="contact"
             className="
             relative
@@ -2260,7 +2311,7 @@ export default function PortfolioHome() {
                 <div>
                   {/* Label */}
                   <div className="mb-[15px] flex items-center gap-[9px]">
-                    <span className="h-[1.5px] w-6 rounded-full bg-[#2ac7a6] dark:bg-[#2ac7a6]" />
+                    <span className="h-[1.5px] w-6 rounded-full bg-[#2ac7a6] dark:bg-[#E0E0E0]" />
 
                     <p className="text-[8.25px] font-bold uppercase tracking-[0.1875em] text-[#2ac7a6] dark:text-[#d0d0d0]">
                       Get in touch
@@ -2275,7 +2326,7 @@ export default function PortfolioHome() {
                     </span>
                   </h3>
 
-                  <p className="portfolio-type-body mt-[15px] max-w-md text-[#58706f] dark:text-[#a0a0a0] max-md:mt-3">
+                  <p className="mt-[15px] max-w-md text-[11.25px] leading-[21px] text-[#58706f] dark:text-[#a0a0a0] max-md:mt-3 max-md:text-[9.75px] max-md:leading-[18px]">
                     Have an idea, project, or opportunity in mind? I&apos;d love
                     to hear about it and turn it into something meaningful.
                   </p>
@@ -2483,7 +2534,7 @@ export default function PortfolioHome() {
               >
                 {/* Form heading */}
                 <div className="mb-6">
-                  <p className="portfolio-type-muted font-bold text-[#2ac7a6] dark:text-[#d0d0d0]">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2ac7a6] dark:text-[#d0d0d0]">
                     Start a conversation
                   </p>
 
@@ -2680,7 +2731,7 @@ export default function PortfolioHome() {
                     type="submit"
                     className="group
                       inline-flex
-                      h-11
+                      h-9
                       min-h-11
                       w-auto
                       shrink-0
@@ -2749,8 +2800,7 @@ export default function PortfolioHome() {
                     className="
                     group
                     inline-flex
-                    h-11
-                    min-h-11
+                    h-9
                     w-50%
                     items-center
                     justify-center
@@ -2847,6 +2897,7 @@ export default function PortfolioHome() {
         </main>
 
         <footer
+          data-reveal
           id="contact-footer"
           className="
           mt-6

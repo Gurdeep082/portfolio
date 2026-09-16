@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
 // Applies the saved theme before first paint so dark mode never flashes light.
 const themeInitScript = `(()=>{try{const saved=localStorage.getItem("darkMode");const dark=saved===null||saved==="true";document.documentElement.classList.toggle("dark",dark)}catch{}})()`;
@@ -114,7 +115,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
       </head>
-      <body className="min-h-full bg-transparent text-[#123d3d] dark:bg-[#121212] dark:text-[#e0e0e0]">{children}</body>
+      <body className="min-h-full bg-transparent text-[#123d3d] dark:bg-[#121212] dark:text-[#e0e0e0]">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }
