@@ -58,6 +58,70 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+.splash-screen {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #edf7f5;
+  opacity: 1;
+  transition: opacity 320ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.splash-screen--exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-screen__logo {
+  width: clamp(96px, 22vw, 168px);
+  height: auto;
+  user-select: none;
+  animation: splashLogoBreath 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  will-change: transform, opacity, filter;
+}
+
+html.dark .splash-screen {
+  background: #121212;
+}
+
+@keyframes splashLogoBreath {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(0.94) rotate(-1deg);
+    filter: drop-shadow(0 0 0 rgba(73, 194, 232, 0));
+  }
+
+  25% {
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(73, 194, 232, 0.12));
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04) rotate(1deg);
+    filter: drop-shadow(0 0 12px rgba(73, 194, 232, 0.2));
+  }
+
+  75% {
+    opacity: 0.9;
+    transform: scale(0.98) rotate(0deg);
+    filter: drop-shadow(0 0 5px rgba(73, 194, 232, 0.1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen__logo {
+    animation: none;
+    opacity: 0.96;
+    transform: scale(0.98);
+    filter: none;
+  }
+}
+
 /* Dark world: strict two-surface neutral system (#121212 canvas, #444444
    panels). Flat, non-repeating background. */
 html.dark body {

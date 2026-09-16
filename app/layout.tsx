@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import SplashScreen from "@/components/SplashScreen";
 
 // Applies the saved theme before first paint so dark mode never flashes light.
 const themeInitScript = `(()=>{try{const saved=localStorage.getItem("darkMode");const dark=saved===null||saved==="true";document.documentElement.classList.toggle("dark",dark)}catch{}})()`;
@@ -23,6 +24,26 @@ export const metadata: Metadata = {
   authors: [{ name: "Gurdeep Singh" }],
   creator: "Gurdeep Singh",
   publisher: "Gurdeep Singh",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon-180x180.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Gurdeep Singh Portfolio",
+    statusBarStyle: "black-translucent",
+  },
   formatDetection: {
     email: true,
     telephone: true,
@@ -116,6 +137,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full bg-transparent text-[#123d3d] dark:bg-[#121212] dark:text-[#e0e0e0]">
+        <SplashScreen />
         <SmoothScroll />
         {children}
       </body>

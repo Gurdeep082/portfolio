@@ -585,7 +585,7 @@ export default function PortfolioHome() {
         transition-all
         hover:bg-[#e7f3f0]
         dark:hover:bg-[#242424]
-        hidden sm:flex
+        hidden md:flex
       "
             >
               {darkMode ? (
