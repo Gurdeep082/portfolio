@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Gurdeep",
     description:
       "Gurdeep Singh - Full Stack Developer specializing in MERN stack.",
-    start_url: "/",
+    start_url: "https://gurdeepsingh-portfolio.vercel.app/admin",
     scope: "/",
     display: "fullscreen",
     theme_color: "#121212",
