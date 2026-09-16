@@ -36,7 +36,13 @@ type DashboardData = {
   };
 };
 
-const apiBase = process.env.NEXT_PUBLIC_API_URL ;
+const apiBase = (
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://portfolio-quwt.onrender.com"
+)
+  .trim()
+  .replace(/\/+$/, "")
+  .replace(/\/api$/, "");
 
 async function fetchJson<T>(url: string, options: RequestInit = {}, adminKey?: string): Promise<T> {
   const headers = new Headers(options.headers || {});

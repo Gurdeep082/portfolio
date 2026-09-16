@@ -22,6 +22,28 @@ const allowedOrigins = new Set([
   "http://127.0.0.1:3001",
 ].filter(Boolean));
 
+const getTrimmedString = (value) =>
+  typeof value === "string" ? value.trim() : "";
+
+const getProjectInput = (body = {}) => {
+  const demoLink = getTrimmedString(body.demoLink || body.link);
+  return {
+    title: getTrimmedString(body.title),
+    description: getTrimmedString(body.description),
+    stack: getTrimmedString(body.stack),
+    demoLink,
+    githubLink: getTrimmedString(body.githubLink),
+    images: Array.isArray(body.images)
+      ? body.images
+          .filter((image) => typeof image === "string" && image.trim())
+          .map((image) => image.trim())
+      : [],
+  };
+};
+
+const isCompleteProjectInput = ({ title, description, demoLink, githubLink, images }) =>
+  Boolean(title && description && demoLink && githubLink && images.length);
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -118,7 +140,7 @@ app.get("/api/projects", async (_, res) => {
   if (!isMongoConnected) return res.status(200).json([]);
 
   try {
-    const projects = await Project.find().sort({ createdAt: -1 });
+    const projects = await Project.find().sort({ createdAt: -1 }).lean();
     return res.status(200).json(projects);
   } catch (error) {
     console.error("Failed to load projects:", error.message);
@@ -132,7 +154,7 @@ app.get("/api/settings", async (_, res) => {
   }
 
   try {
-    const settings = await SiteSettings.findOne({ key: "portfolio" });
+    const settings = await SiteSettings.findOne({ key: "portfolio" }).lean();
     return res.status(200).json({
       resume: settings?.resume || "",
       resumeName: settings?.resumeName || "",
@@ -171,7 +193,10 @@ app.post("/api/visits", async (_, res) => {
 });
 
 app.post("/api/contact", async (req, res) => {
-  const { fullName, email, company, message } = req.body;
+  const fullName = getTrimmedString(req.body?.fullName);
+  const email = getTrimmedString(req.body?.email).toLowerCase();
+  const company = getTrimmedString(req.body?.company);
+  const message = getTrimmedString(req.body?.message);
 
   if (!fullName || !email || !message) {
     return res.status(400).json({
@@ -180,7 +205,7 @@ app.post("/api/contact", async (req, res) => {
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (email.length > 150 || !emailRegex.test(email)) {
     return res.status(400).json({ message: "Please provide a valid email address." });
   }
 
@@ -192,10 +217,10 @@ app.post("/api/contact", async (req, res) => {
 
   try {
     const contact = await ContactMessage.create({
-      fullName: fullName.trim(),
-      email: email.trim(),
-      company: company ? company.trim() : "",
-      message: message.trim(),
+      fullName,
+      email,
+      company,
+      message,
     });
 
     broadcastAdminEvent("message-created", contact.toObject());
@@ -214,9 +239,9 @@ app.post("/api/contact", async (req, res) => {
 app.get("/api/admin/dashboard", requireAdmin, requireDatabase, async (_, res) => {
   try {
     const [projects, messages, settings] = await Promise.all([
-      Project.find().sort({ createdAt: -1 }),
-      ContactMessage.find().sort({ createdAt: -1 }),
-      SiteSettings.findOne({ key: "portfolio" }),
+      Project.find().sort({ createdAt: -1 }).lean(),
+      ContactMessage.find().sort({ createdAt: -1 }).lean(),
+      SiteSettings.findOne({ key: "portfolio" }).lean(),
     ]);
 
     return res.status(200).json({
@@ -259,18 +284,9 @@ app.put("/api/admin/reset-visits", requireAdmin, requireDatabase, async (_, res)
 
 
 app.post("/api/admin/projects", requireAdmin, requireDatabase, async (req, res) => {
-  const { title, description, stack, demoLink, githubLink, link, images } = req.body;
-  const finalizedDemoLink = (demoLink || link || "").trim();
-  const finalizedGithubLink = (githubLink || "").trim();
+  const { title, description, stack, demoLink, githubLink, images } = getProjectInput(req.body);
 
-  if (
-    !title ||
-    !description ||
-    !finalizedDemoLink ||
-    !finalizedGithubLink ||
-    !Array.isArray(images) ||
-    images.length === 0
-  ) {
+  if (!isCompleteProjectInput({ title, description, demoLink, githubLink, images })) {
     return res.status(400).json({
       message: "Title, description, live demo link, GitHub link and at least one image are required.",
     });
@@ -281,9 +297,9 @@ app.post("/api/admin/projects", requireAdmin, requireDatabase, async (req, res) 
       title,
       description,
       stack,
-      demoLink: finalizedDemoLink,
-      githubLink: finalizedGithubLink,
-      link: finalizedDemoLink,
+      demoLink,
+      githubLink,
+      link: demoLink,
       images,
     });
 
@@ -299,18 +315,9 @@ app.post("/api/admin/projects", requireAdmin, requireDatabase, async (req, res) 
 });
 
 app.put("/api/admin/projects/:id", requireAdmin, requireDatabase, async (req, res) => {
-  const { title, description, stack, demoLink, githubLink, link, images } = req.body;
-  const finalizedDemoLink = (demoLink || link || "").trim();
-  const finalizedGithubLink = (githubLink || "").trim();
+  const { title, description, stack, demoLink, githubLink, images } = getProjectInput(req.body);
 
-  if (
-    !title ||
-    !description ||
-    !finalizedDemoLink ||
-    !finalizedGithubLink ||
-    !Array.isArray(images) ||
-    images.length === 0
-  ) {
+  if (!isCompleteProjectInput({ title, description, demoLink, githubLink, images })) {
     return res.status(400).json({
       message: "Title, description, live demo link, GitHub link and at least one image are required.",
     });
@@ -319,7 +326,7 @@ app.put("/api/admin/projects/:id", requireAdmin, requireDatabase, async (req, re
   try {
     const project = await Project.findByIdAndUpdate(
       req.params.id,
-      { title, description, stack, demoLink: finalizedDemoLink, githubLink: finalizedGithubLink, link: finalizedDemoLink, images },
+      { title, description, stack, demoLink, githubLink, link: demoLink, images },
       { new: true, runValidators: true }
     );
 

@@ -86,7 +86,13 @@ const normalizeProjectImageSource = (
   return null;
 };
 
-const apiBase = process.env.NEXT_PUBLIC_API_URL || "";
+const apiBase = (
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://portfolio-quwt.onrender.com"
+)
+  .trim()
+  .replace(/\/+$/, "")
+  .replace(/\/api$/, "");
 
 const fallbackProjects: Project[] = [
   {
