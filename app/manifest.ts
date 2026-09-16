@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Gurdeep Singh - Full Stack Developer specializing in MERN stack.",
     start_url: "/",
     scope: "/",
-    display: "standalone",
+    display: "fullscreen",
     theme_color: "#121212",
     background_color: "#121212",
     icons: [

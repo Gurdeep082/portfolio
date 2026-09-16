@@ -110,6 +110,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <meta name="msapplication-TileColor" content="#121212" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
