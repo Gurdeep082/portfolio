@@ -541,7 +541,7 @@ export default function PortfolioHome() {
             </a>
 
             {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-[18px] text-[10.5px] text-[#d8efeb] md:flex">
+            <nav className="hidden items-center gap-[18px] text-[12.5px] text-[#d8efeb] md:flex">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -1550,7 +1550,7 @@ export default function PortfolioHome() {
                 {fetchError}
               </div>
             ) : (
-              <div className="grid items-start justify-start gap-3 max-md:flex max-md:w-full max-md:snap-x max-md:snap-mandatory max-md:gap-[9px] max-md:overflow-x-auto max-md:overscroll-x-contain max-md:pb-1.5 md:grid-cols-[minmax(0,269px)_minmax(0,269px)]">
+              <div className="grid items-start justify-start gap-3 max-md:flex max-md:w-full max-md:snap-x max-md:snap-mandatory max-md:gap-[9px] max-md:overflow-x-auto max-md:overscroll-x-contain max-md:pb-1.5 md:grid-cols-[minmax(0,323px)_minmax(0,323px)]">
                 {projectList.map((project, index) => {
                   const projectKey = project._id ?? `${project.title}-${index}`;
 
@@ -1579,16 +1579,17 @@ export default function PortfolioHome() {
                         project-card
                         group
                         flex
-                        h-[360px]
-                        min-h-0
+                        h-auto
+                        min-h-[360px]
                         w-full
-                        max-w-[248.325px]
+                        max-w-[298px]
                         justify-self-start
                         max-md:flex-none
                         max-md:snap-center
-                        max-md:w-[80%]
-                        max-md:max-w-[198.66px]
-                        max-md:h-[194px]
+                        max-md:w-[262px]
+                        max-md:max-w-[262px]
+                        max-md:h-auto
+                        max-md:min-h-[213px]
                         flex-col
                         overflow-hidden
                         rounded-[11px]
@@ -1608,7 +1609,7 @@ export default function PortfolioHome() {
                         dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.35)]
                         "
                     >
-                      <div className="relative h-[40%] w-full shrink-0 overflow-hidden rounded-t-[11px] bg-[#eef6f4] dark:bg-[#121212] max-md:rounded-t-[9px]">
+                      <div className="relative h-[144px] w-full shrink-0 overflow-hidden rounded-t-[11px] bg-[#eef6f4] dark:bg-[#121212] max-md:h-[85px] max-md:rounded-t-[9px]">
                         {/* Images */}
                         {images.length > 0 ? (
                           images.map((imageSource, imageIndex) => (
@@ -1706,7 +1707,7 @@ export default function PortfolioHome() {
                         CONTENT
                     ====================================== */}
 
-                      <div className="flex h-[60%] min-h-0 flex-col overflow-hidden p-[13px] max-md:p-2 sm:p-4">
+                      <div className="flex min-h-[216px] flex-1 flex-col p-[13px] max-md:min-h-[128px] max-md:p-2 sm:p-4">
                         {/* Title */}
                         <div className="mb-3 max-md:mb-2">
                           <h3
@@ -1745,13 +1746,23 @@ export default function PortfolioHome() {
 
                         {/* Stack */}
                         {project.stack ? (
-                          <div className="mt-3 max-md:mt-2">
-                            <div className="flex min-w-0 flex-nowrap gap-1 overflow-hidden max-md:gap-0.5">
-                              {project.stack.split(",").slice(0, 6).map((item) => (
-                                <span
-                                  key={item}
-                                  className="
+                          <div className="mt-3 min-w-0 max-md:mt-2">
+                            <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#78908f] dark:text-[#8f9b9b] max-md:text-[6px]">
+                              Tech stack
+                            </p>
+                            <div className="flex max-h-[42px] min-w-0 flex-wrap content-start gap-1 overflow-hidden max-md:max-h-[25px] max-md:gap-0.5">
+                              {project.stack
+                                .split(/[,|\n]+/)
+                                .map((item) => item.trim())
+                                .filter(Boolean)
+                                .slice(0, 6)
+                                .map((item) => (
+                                  <span
+                                    key={item}
+                                    className="
                                 rounded-full
+                                shrink-0
+                                whitespace-nowrap
                                 border
                                 border-[#123d3d]/10
                                 dark:border-[#2f2f2f]
@@ -1771,10 +1782,10 @@ export default function PortfolioHome() {
                         dark:hover:border-[#555555]
                                 dark:group-hover:border-[#888888]/60
                               "
-                                >
-                                  {item.trim()}
-                                </span>
-                              ))}
+                                  >
+                                    {item}
+                                  </span>
+                                ))}
                             </div>
                           </div>
                         ) : null}
